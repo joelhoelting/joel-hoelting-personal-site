@@ -3,5 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+import React from 'react';
+import RootLayout from '~/layouts/root';
 
-// You can delete this file if you're not using it
+export const wrapRootElement = ({ element }) => <RootLayout>{element}</RootLayout>;
