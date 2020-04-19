@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import styled, { keyframes } from 'styled-components';
 
 const drawLine = keyframes`
   25% {
     fill-opacity: 0;
+  }
+
+  60% {
+    fill-opacity: 1;
   }
 
   100% {
@@ -20,7 +24,7 @@ const AnimatedLogo = styled.svg`
   path {
     stroke: ${props => props.theme.color};
     fill: ${props => props.theme.color};
-    animation: ${drawLine} 3s linear forwards;
+    animation: ${drawLine} 4s linear forwards;
     fill-opacity: 0;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
@@ -58,8 +62,17 @@ const AnimatedTitle = () => {
         d="M657.2,109.4a77.6,77.6,0,0,1,22.2-54,75.5,75.5,0,0,1,107.8,0,76.8,76.8,0,0,1,0,108,75.5,75.5,0,0,1-107.8,0A77.6,77.6,0,0,1,657.2,109.4Zm130.5,0a54.7,54.7,0,0,0-54.4-54.9A53.6,53.6,0,0,0,695,70.8a54.6,54.6,0,0,0,0,77.3,53.6,53.6,0,0,0,38.2,16.2,54.7,54.7,0,0,0,54.4-54.9ZM714.4,7.6c-6.6,0-11.7,4.3-11.7,10.7s5.1,10.2,11.7,10.2,12.4-5.1,12.4-10.2S721.7,7.6,714.4,7.6Zm39.3,0c-6.6,0-12,4.3-12,10.7s5.3,10.2,12,10.2,12.4-5.1,12.4-10.2S761.2,7.6,753.7,7.6Z"
         transform="translate(-5.5 -6.1)"
       />
-      <path id="L-2" data-name="L" d="M845.5,162.6h70.2v21.6H823.9V34.9h21.6Z" transform="translate(-5.5 -6.1)" />
-      <path id="T" d="M933.7,184.8V54.8H888.4V34.7h111.9V54.8H955.3v130Z" transform="translate(-5.5 -6.1)" />
+      <path
+        id="L-2"
+        data-name="L"
+        d="M845.5,162.6h70.2v21.6H823.9V34.9h21.6Z"
+        transform="translate(-5.5 -6.1)"
+      />
+      <path
+        id="T"
+        d="M933.7,184.8V54.8H888.4V34.7h111.9V54.8H955.3v130Z"
+        transform="translate(-5.5 -6.1)"
+      />
       <path
         id="I"
         d="M1084.9,56.3h-27.8V162.6h27.8v21.6h-77.1V162.6h27.8V56.3h-27.8V34.9h77.1Z"

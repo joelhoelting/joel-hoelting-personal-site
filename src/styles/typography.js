@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const TypographyStyles = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Code Bold';
+    letter-spacing: 6px;
     &.light {
       font-family: 'Code Light';
     }
@@ -21,6 +22,12 @@ const TypographyStyles = createGlobalStyle`
 
   button {
     font-family: 'Montserrat', sans-serif;
+  }
+
+  a {
+    color: ${props => props.theme.color};
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
   }
 
 `;
