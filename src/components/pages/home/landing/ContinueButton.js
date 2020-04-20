@@ -36,12 +36,9 @@ const ContinueButtonLink = styled(Link)`
   letter-spacing: 2px;
   font-size: 0.6em;
   margin: 20px 0 0;
-  opacity: 0;
+  opacity: ${props => (props.showButton ? 1 : 0)};
   transition: opacity 300ms ease;
   outline: none;
-  &.visible {
-    opacity: 1;
-  }
 
   svg,
   rect {
@@ -84,7 +81,7 @@ const ContinueButton = () => {
   return (
     <>
       <ContinueButtonLink
-        className={showButton && 'visible'}
+        showButton={showButton}
         duration={1000}
         href="#about"
         to="about"

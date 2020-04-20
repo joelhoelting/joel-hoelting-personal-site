@@ -43,9 +43,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={darkModeActive ? darkTheme : lightTheme}>
       <GlobalCSS />
       <Header />
-      <main style={{ height: '100%' }}>
-        <div className="container">{children}</div>
-      </main>
+      <main style={{ height: '100%' }}>{children}</main>
     </ThemeProvider>
   );
 };

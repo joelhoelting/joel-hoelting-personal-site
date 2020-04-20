@@ -4,20 +4,26 @@ import React, { useEffect, useState } from 'react';
 
 import Context from '~/context';
 
+// export to createContext() -- '~/context'
+export const defaultState = {
+  darkModeActive: true,
+  toggleDarkMode: () => {}
+};
+
 const ContextProvider = props => {
   const [darkModeActive, setdarkModeActive] = useState(true);
 
   const toggleDarkMode = () => {
-    window.localStorage.setItem('darkTheme', !darkModeActive);
+    window.localStorage.setItem('darkModeActive', !darkModeActive);
     setdarkModeActive(!darkModeActive);
   };
 
   useEffect(() => {
-    const localStorageThemeValue = window.localStorage.getItem('darkTheme');
+    const localStorageThemeValue = window.localStorage.getItem('darkModeActive');
     if (localStorageThemeValue) {
       setdarkModeActive(JSON.parse(localStorageThemeValue));
     } else {
-      window.localStorage.setItem('darkTheme', darkModeActive);
+      window.localStorage.setItem('darkModeActive', darkModeActive);
     }
   }, []);
 

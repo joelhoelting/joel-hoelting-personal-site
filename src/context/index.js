@@ -1,3 +1,5 @@
 import React from 'react';
-const Context = React.createContext();
+import { defaultState } from '~/provider';
+
+const Context = React.createContext(defaultState);
 export default Context;
