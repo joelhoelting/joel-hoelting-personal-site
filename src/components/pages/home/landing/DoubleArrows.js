@@ -44,7 +44,7 @@ const StyledSVG = styled.svg`
   top: -10px;
   transition: all 100ms ease;
   width: 30px;
-
+  z-index: -1;
   &.active {
     animation: ${keyframesCycleFillColors} 6s linear infinite,
       ${keyframesFloating} 5s linear infinite;

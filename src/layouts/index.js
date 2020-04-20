@@ -14,7 +14,7 @@ import Context from '~/context';
 import { darkTheme, lightTheme } from '~/styles/theme';
 import { ContainerStyles, FontStyles, GlobalStyles, TypographyStyles } from '~/styles';
 
-import Header from '~/components/includes/header';
+import Header from '~/components/header';
 
 // if (typeof window !== 'undefined') {
 //   // eslint-disable-next-line global-require

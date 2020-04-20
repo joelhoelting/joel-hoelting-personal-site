@@ -9,7 +9,7 @@ import routes from '~/data/routes';
 const StyledHeader = styled.header`
   position: fixed;
   width: 100%;
-  background: grey;
+  ${'' /* background: grey; */}
   height: 50px;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
 
 const generateLinks = () =>
   routes.map(route => (
-    <li>
+    <li key={`${route}-link`}>
       <Link href={`#${route}`} to={route} spy hashSpy smooth duration={1000}>
         {route}
       </Link>
@@ -33,7 +33,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
-      <ul>{generateLinks()}</ul>
+      <nav>
+        <ul>{generateLinks()}</ul>
+      </nav>
     </StyledHeader>
   );
 };

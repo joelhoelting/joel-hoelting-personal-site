@@ -36,9 +36,12 @@ const ContinueButtonLink = styled(Link)`
   letter-spacing: 2px;
   font-size: 0.6em;
   margin: 20px 0 0;
-  opacity: ${props => (props.showButton ? 1 : 0)};
+  opacity: ${props => (props.buttonVisible ? 1 : 0)};
   transition: opacity 300ms ease;
   outline: none;
+  &.visible {
+    opacity: 1;
+  }
 
   svg,
   rect {
@@ -66,23 +69,23 @@ const ContinueButtonLink = styled(Link)`
 
 const ContinueButton = () => {
   const [buttonHoverState, setButtonHoverState] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [buttonVisible, setbuttonVisible] = useState(false);
 
   useEffect(() => {
-    let showButtonTimer = setTimeout(() => {
-      setShowButton(true);
+    let buttonVisibleTimer = setTimeout(() => {
+      setbuttonVisible(true);
     }, 1500);
 
     return () => {
-      clearTimeout(showButtonTimer);
+      clearTimeout(buttonVisibleTimer);
     };
   });
 
   return (
     <>
       <ContinueButtonLink
-        showButton={showButton}
-        duration={1000}
+        className={buttonVisible && 'visible'}
+        duration={600}
         href="#about"
         to="about"
         smooth
@@ -94,7 +97,7 @@ const ContinueButton = () => {
         </svg>
         Continue
       </ContinueButtonLink>
-      <DoubleArrows active={showButton && buttonHoverState} />
+      <DoubleArrows active={buttonVisible && buttonHoverState} />
     </>
   );
 };

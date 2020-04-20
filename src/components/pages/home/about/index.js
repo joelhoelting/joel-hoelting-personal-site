@@ -2,14 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 
+import AboutSection from './AboutSection';
+import Divider from '~/components/shared/Divider';
+
 const AboutContainer = styled(Element)`
-  height: 100%;
-  width: 100%;
-  background: green;
+  min-height: 100vh;
+  position: relative;
 `;
 
-const AboutSection = () => {
-  return <AboutContainer name="about">About Section</AboutContainer>;
+const About = () => {
+  return (
+    <AboutContainer name="about" className="container">
+      <Divider />
+      <AboutSection />
+    </AboutContainer>
+  );
 };
 
-export default AboutSection;
+export default About;

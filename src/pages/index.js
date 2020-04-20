@@ -1,13 +1,13 @@
 import React from 'react';
 import SEO from '~/components/seo';
-import LandingSection from '~/components/pages/home/landing';
-import AboutSection from '~/components/pages/home/about';
+import Landing from '~/components/pages/home/landing';
+import About from '~/components/pages/home/about';
 
 const IndexPage = () => (
   <>
     <SEO title="Home" />
-    <LandingSection />
-    <AboutSection />
+    <Landing />
+    <About />
   </>
 );
 

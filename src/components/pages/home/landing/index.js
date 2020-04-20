@@ -39,7 +39,7 @@ const LandingContainer = styled(Element)`
   }
 `;
 
-const LandingSection = () => {
+const Landing = () => {
   const context = useContext(Context);
   const { darkModeActive } = context;
 
@@ -86,8 +86,8 @@ const LandingSection = () => {
                   mode: 'grab'
                 },
                 onClick: {
-                  enable: true,
-                  mode: 'push'
+                  enable: false
+                  // mode: 'push'
                 }
               },
               modes: {
@@ -116,4 +116,4 @@ const LandingSection = () => {
   );
 };
 
-export default LandingSection;
+export default Landing;

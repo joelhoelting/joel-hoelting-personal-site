@@ -16,8 +16,10 @@ const TypographyStyles = createGlobalStyle`
   h5 { font-size: 0.8em; }
   h6 { font-size: 0.7em; }
 
-  p {
-    font-family: 'Jaldi', sans-serif;
+  p, button, a {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.4em;
   }
 
   button {
@@ -26,7 +28,6 @@ const TypographyStyles = createGlobalStyle`
 
   a {
     color: ${props => props.theme.color};
-    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
   }
 
