@@ -63,6 +63,7 @@ const ContinueButtonLink = styled(Link)`
     &:hover {
       stroke-dashoffset: 420;
       stroke-width: 6;
+      fill: rgba(255, 255, 255, 0.05);
     }
   }
 `;

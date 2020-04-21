@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
 const generateLinks = () =>
   routes.map(route => (
     <li key={`${route}-link`}>
-      <Link href={`#${route}`} to={route} spy hashSpy smooth duration={1000}>
+      <Link href={`#${route}`} to={route} spy hashSpy smooth duration={600}>
         {route}
       </Link>
     </li>

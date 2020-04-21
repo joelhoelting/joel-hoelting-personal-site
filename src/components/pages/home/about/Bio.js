@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const AboutSectionWrapper = styled.div`
+const BioWrapper = styled.div`
+  padding: 6em 0;
   display: flex;
   align-items: center;
   .photo {
@@ -22,8 +23,8 @@ const AboutSectionWrapper = styled.div`
   }
 `;
 
-const AboutSection = () => {
-  const data = useStaticQuery(graphql`
+const Bio = () => {
+  const portraitImgData = useStaticQuery(graphql`
     query {
       portraitImage: file(relativePath: { eq: "joel_hoelting_portrait.jpg" }) {
         id
@@ -41,9 +42,9 @@ const AboutSection = () => {
   `);
 
   return (
-    <AboutSectionWrapper>
+    <BioWrapper>
       <div className="photo">
-        <Img fluid={data.portraitImage.childImageSharp.fluid} alt="Joel Hoelting" />
+        <Img fluid={portraitImgData.portraitImage.childImageSharp.fluid} alt="Joel Hoelting" />
       </div>
       <div className="summary">
         <p>
@@ -54,8 +55,8 @@ const AboutSection = () => {
           in the industry. My developer ethos: always be learning and always be coding.
         </p>
       </div>
-    </AboutSectionWrapper>
+    </BioWrapper>
   );
 };
 
-export default AboutSection;
+export default Bio;

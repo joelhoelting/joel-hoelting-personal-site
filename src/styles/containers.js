@@ -4,7 +4,7 @@ const ContainerStyles = createGlobalStyle`
   .container {
     width: 90%;
     margin: 0 auto;
-    padding: 10em 0;
+    padding: 5em 0;
   }
 `;
 

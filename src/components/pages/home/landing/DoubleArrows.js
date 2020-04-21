@@ -40,11 +40,12 @@ const keyframesFloating = keyframes`
 const StyledSVG = styled.svg`
   animation: ${keyframesCycleFillColors} 6s linear infinite;
   opacity: 0;
-  position: relative;
-  top: -10px;
   transition: all 100ms ease;
   width: 30px;
   z-index: -1;
+  margin-top: 20px;
+  position: relative;
+  top: -20px;
   &.active {
     animation: ${keyframesCycleFillColors} 6s linear infinite,
       ${keyframesFloating} 5s linear infinite;

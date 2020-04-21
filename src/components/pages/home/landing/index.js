@@ -84,21 +84,14 @@ const Landing = () => {
                 onHover: {
                   enable: true,
                   mode: 'grab'
-                },
-                onClick: {
-                  enable: false
-                  // mode: 'push'
                 }
               },
               modes: {
                 grab: {
                   distance: 180,
                   line_linked: {
-                    opacity: 0.35
+                    opacity: 0.5
                   }
-                },
-                push: {
-                  particles_nb: 4
                 }
               }
             },

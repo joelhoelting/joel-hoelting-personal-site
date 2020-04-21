@@ -4,11 +4,9 @@ import styled from 'styled-components';
 import Context from '~/context';
 
 const DividerWrapper = styled.div`
-  position: absolute;
   top: 0;
-  left: 3em;
-  right: 3em;
-  width: calc(100% - 6em);
+  left: 0;
+  width: 100%;
   height: 1px;
   border-top: 1px solid ${props => props.theme.color};
   ${props => props.darkModeActive && 'box-shadow: 0px 0px 5px 1px #fff'};
