@@ -62,8 +62,8 @@ const ContinueButtonLink = styled(Link)`
 
     &:hover {
       stroke-dashoffset: 420;
-      stroke-width: 6;
-      fill: rgba(255, 255, 255, 0.05);
+      stroke-width: 8;
+      fill: ${props => props.theme.continueBtnFill};
     }
   }
 `;

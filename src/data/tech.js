@@ -21,13 +21,14 @@ import {
   Postman,
   Redux,
   Sketch,
-  VueDotJs
+  VueDotJs,
+  Wordpress
 } from '@icons-pack/react-simple-icons';
 
-const techStackArray = [
+const techItemsArray = [
   {
     heading: 'CURRENT STACK',
-    stackItems: [
+    listItems: [
       { icon: <Javascript />, name: 'JavaScript' },
       { icon: <NodeDotJs />, name: 'Node JS' },
       { icon: <ReactJs />, name: 'React JS' },
@@ -52,26 +53,26 @@ const techStackArray = [
   },
   {
     heading: 'OTHER SKILLS',
-    stackItems: [
+    listItems: [
       { icon: <NextDotJs />, name: 'Next JS' },
       { icon: <Gatsby />, name: 'Gatsby JS' },
       { icon: <Graphql />, name: 'GraphQL' },
       { icon: <Postgresql />, name: 'PostgresQL' },
       { icon: <Gulp />, name: 'Gulp' },
-      { icon: <Invision />, name: 'Invision' },
-
+      {
+        icon: <Linux />,
+        name: 'Linux'
+      },
       { icon: <Postman />, name: 'Postman' },
+      { icon: <Wordpress />, name: 'Wordpress' },
       { icon: <Sketch />, name: 'Sketch' },
       {
         icon: <Adobeillustrator />,
         name: 'Adobe Illustrator'
       },
-      {
-        icon: <Linux />,
-        name: 'Linux'
-      }
+      { icon: <Invision />, name: 'Invision' }
     ]
   }
 ];
 
-export default techStackArray;
+export default techItemsArray;

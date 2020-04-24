@@ -34,6 +34,10 @@ const TypographyStyles = createGlobalStyle`
   .center {
     text-align: center;
   }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
 `;
 
 export default TypographyStyles;

@@ -12,7 +12,13 @@ import { ThemeProvider } from 'styled-components';
 import Context from '~/context';
 
 import { darkTheme, lightTheme } from '~/styles/theme';
-import { ContainerStyles, FontStyles, GlobalStyles, TypographyStyles } from '~/styles';
+import {
+  ContainerStyles,
+  FontStyles,
+  GlobalStyles,
+  LayoutStyles,
+  TypographyStyles
+} from '~/styles';
 
 import Header from '~/components/header';
 
@@ -30,6 +36,7 @@ const GlobalCSS = () => {
       <ContainerStyles />
       <FontStyles />
       <GlobalStyles />
+      <LayoutStyles />
       <TypographyStyles />
     </>
   );

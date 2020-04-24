@@ -1,21 +1,16 @@
 import React from 'react';
 import TechSection from './TechSection';
-import styled from 'styled-components';
 
-import techStackArray from '~/data/tech';
+import techItemsArray from '~/data/tech';
 
-const TechWrapper = styled.div`
-  margin: 5em auto;
-`;
-
-const Tech = () => {
+const Tech = props => {
   return (
-    <TechWrapper>
+    <div {...props}>
       <h3 className="center">Tech</h3>
-      {techStackArray.map(sectionData => (
-        <TechSection sectionData={sectionData} />
+      {techItemsArray.map((techObj, idx) => (
+        <TechSection key={`tech-section-${idx}`} sectionData={techObj} />
       ))}
-    </TechWrapper>
+    </div>
   );
 };
 
