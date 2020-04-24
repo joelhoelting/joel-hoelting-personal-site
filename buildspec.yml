@@ -16,11 +16,11 @@ phases:
         if [ $CODEBUILD_BUILD_SUCCEEDING -eq 1 ]; then
           if [ "$BRANCH_NAME" = "master" ]; then
             echo "Syncing files with AWS w/ Cache Control Headers"
-            aws s3 sync build/ "s3://${BUCKET_NAME}" --exclude "*.html" --delete --cache-control max-age=31557600
-            aws s3 sync build/ "s3://${BUCKET_NAME}" --include "*.html" --cache-control max-age=0
+            aws s3 sync public/ "s3://${BUCKET_NAME}" --exclude "*.html" --delete --cache-control max-age=31557600
+            aws s3 sync public/ "s3://${BUCKET_NAME}" --include "*.html" --cache-control max-age=0
           elif [ "$BRANCH_NAME" = "develop" ]; then
             echo "Syncing files with AWS"
-            aws s3 sync build/ "s3://${BUCKET_NAME}" --delete
+            aws s3 sync public/ "s3://${BUCKET_NAME}" --delete
           fi
         else
           echo "Build/Deploy failure"
@@ -36,6 +36,8 @@ phases:
             aws cloudfront create-invalidation --distribution-id $CF_DIST_ID --paths /*
           fi
           echo "Build/Deploy success on branch ${BRANCH_NAME} on $(date)"
+          aws sns publish --phone-number ${PHONE_NUMBER} --message "AWS CodeBuild success. ${BUCKET_NAME}; ${BRANCH_NAME} branch; on $(TZ=":US/Eastern" date)"
+          echo "Send text message to ${PHONE_NUMBER} on $(date)"
         else
           echo "Build/Deploy failure"
         fi
