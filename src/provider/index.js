@@ -11,21 +11,23 @@ export const defaultState = {
 };
 
 const ContextProvider = props => {
-  const [darkModeActive, setdarkModeActive] = useState(true);
+  const localStorageThemeValue = window.localStorage.getItem('darkModeActive');
+
+  const [darkModeActive, setdarkModeActive] = useState(!!JSON.parse(localStorageThemeValue));
 
   const toggleDarkMode = () => {
     window.localStorage.setItem('darkModeActive', !darkModeActive);
     setdarkModeActive(!darkModeActive);
   };
 
-  useEffect(() => {
-    const localStorageThemeValue = window.localStorage.getItem('darkModeActive');
-    if (localStorageThemeValue) {
-      setdarkModeActive(JSON.parse(localStorageThemeValue));
-    } else {
-      window.localStorage.setItem('darkModeActive', darkModeActive);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const localStorageThemeValue = window.localStorage.getItem('darkModeActive');
+  //   if (localStorageThemeValue) {
+  //     setdarkModeActive(JSON.parse(localStorageThemeValue));
+  //   } else {
+  //     window.localStorage.setItem('darkModeActive', darkModeActive);
+  //   }
+  // }, []);
 
   return (
     <Context.Provider
