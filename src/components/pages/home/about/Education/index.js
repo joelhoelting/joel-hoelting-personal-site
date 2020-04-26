@@ -8,7 +8,7 @@ const Education = props => {
     <div {...props}>
       <h3 className="center">Education</h3>
       {educationArray.map((educationObj, idx) => (
-        <EducationSection key={`tech-section-${idx}`} sectionData={educationObj} />
+        <EducationSection key={`education-section-${idx}`} sectionData={educationObj} />
       ))}
     </div>
   );

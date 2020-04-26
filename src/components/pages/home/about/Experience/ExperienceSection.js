@@ -5,7 +5,7 @@ import AnimatedListItem from '../_shared/AnimatedListItem';
 
 const ExperienceSection = ({ sectionData }) => {
   const { endDate, heading, listDescription, listItems, subHeading, startDate } = sectionData;
-  const className = 'experience-list-item';
+  const listItemClassName = 'experience-list-item';
 
   return (
     <AnimatedSection
@@ -20,9 +20,9 @@ const ExperienceSection = ({ sectionData }) => {
       {listItems.map((experienceListItem, idx) => {
         return (
           <AnimatedListItem
-            className={className}
+            className={listItemClassName}
             idx={idx}
-            key={`${className}-${idx}`}
+            key={`${listItemClassName}-${idx}`}
             lineDuration={2000}
             transitionDuration={500}
           >

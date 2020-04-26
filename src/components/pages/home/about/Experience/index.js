@@ -8,7 +8,7 @@ const Experience = props => {
     <div {...props}>
       <h3 className="center">Experience</h3>
       {experienceArray.map((experienceObj, idx) => (
-        <ExperienceSection key={`tech-section-${idx}`} sectionData={experienceObj} />
+        <ExperienceSection key={`experience-section-${idx}`} sectionData={experienceObj} />
       ))}
     </div>
   );

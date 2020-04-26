@@ -5,16 +5,16 @@ import AnimatedListItem from '../_shared/AnimatedListItem';
 
 const TechSection = ({ sectionData }) => {
   const { heading, listItems } = sectionData;
-  const className = 'tech-list-item';
+  const techItemClassName = 'tech-list-item';
 
   return (
     <AnimatedSection bottomOffset="200px" heading={heading} lineDuration={3000}>
       {listItems.map((techListItem, idx) => {
         return (
           <AnimatedListItem
-            className={className}
+            className={techItemClassName}
             idx={idx}
-            key={`${className}-${idx}`}
+            key={`${techItemClassName}-${idx}`}
             lineDuration={2000}
           >
             {techListItem.icon}

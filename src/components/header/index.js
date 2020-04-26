@@ -5,16 +5,26 @@ import { Link } from 'react-scroll';
 import Context from '~/context';
 
 import routes from '~/data/routes';
+import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
 
 const StyledHeader = styled.header`
-  position: fixed;
+  position: absolute;
   width: 100%;
-  ${'' /* background: grey; */}
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1;
+  padding: 0 1em;
+  nav {
+    ul {
+      display: flex;
+      li {
+        margin-left: 1em;
+        text-transform: uppercase;
+      }
+    }
+  }
 `;
 
 const generateLinks = () =>
@@ -32,6 +42,7 @@ const Header = () => {
 
   return (
     <StyledHeader>
+      <JoelHoeltingLogo />
       <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       <nav>
         <ul>{generateLinks()}</ul>

@@ -38,6 +38,7 @@ const AnimatedSectionWrapper = styled.div`
   .right {
     padding-left: 2em;
     width: 50%;
+    max-width: 700px;
     position: relative;
     .left-line {
       border-left: 1px solid ${props => props.theme.color};

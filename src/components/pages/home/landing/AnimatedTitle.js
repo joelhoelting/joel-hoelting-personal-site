@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import styled, { keyframes } from 'styled-components';
 
@@ -17,14 +17,14 @@ const drawLine = keyframes`
   }
 `;
 
-const AnimatedLogo = styled.svg`
+const StyledSVG = styled.svg`
   max-width: 1000px;
   stroke-width: 2;
   width: 100%;
   path {
     stroke: ${props => props.theme.color};
     fill: ${props => props.theme.color};
-    animation: ${drawLine} 4s linear forwards;
+    animation: 4s linear forwards ${drawLine};
     fill-opacity: 0;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
@@ -33,7 +33,7 @@ const AnimatedLogo = styled.svg`
 
 const AnimatedTitle = () => {
   return (
-    <AnimatedLogo xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1356.8 181.5">
+    <StyledSVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1356.8 181.5">
       <title>Joel Hoelting</title>
       <path
         id="J"
@@ -88,7 +88,7 @@ const AnimatedTitle = () => {
         d="M1336.6,88.3c-6-24.1-29-32.9-48-32.9-29.3,0-51.9,22.8-51.9,54.2s22.6,54.9,51.9,54.9c18.4,0,38-8.5,47-30.3h-55.3V112.6h80.5c-1.1,12.6-2.1,20.9-4.1,25.8v-.2c-10.2,28.6-41,47-68.1,47-41.8,0-73.4-31.6-73.4-75.6s32.2-75.8,73.4-75.8c28.6,0,63.2,14.7,71.1,54.4Z"
         transform="translate(-5.5 -6.1)"
       />
-    </AnimatedLogo>
+    </StyledSVG>
   );
 };
 
