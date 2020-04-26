@@ -51,7 +51,7 @@ const StyledSVG = styled.svg`
       ${keyframesFloating} 5s linear infinite;
     opacity: 1;
     top: 0;
-    transition: all 500ms ease 200ms;
+    transition: all 500ms ease;
   }
 `;
 

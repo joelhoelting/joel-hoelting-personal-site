@@ -15,10 +15,11 @@ const AnimatedButtonWrapper = styled.button`
   line-height: ${props => `${props.width / 5}px`};
   font-size: ${props => props.fontSize || '.6em'};
   letter-spacing: 2px;
+  padding: 0;
   ${'' /* transition: opacity 300ms ease;
   opacity: ${props => (props.visible ? 1 : 0)}; */}
   cursor: pointer;
-  outline: none;
+  ${'' /* outline: none; */}
 
   svg,
   rect {
