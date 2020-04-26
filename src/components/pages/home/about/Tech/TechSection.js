@@ -8,10 +8,15 @@ const TechSection = ({ sectionData }) => {
   const className = 'tech-list-item';
 
   return (
-    <AnimatedSection heading={heading}>
+    <AnimatedSection bottomOffset="200px" heading={heading} lineDuration={3000}>
       {listItems.map((techListItem, idx) => {
         return (
-          <AnimatedListItem className={className} idx={idx} key={`${className}-${idx}`}>
+          <AnimatedListItem
+            className={className}
+            idx={idx}
+            key={`${className}-${idx}`}
+            lineDuration={2000}
+          >
             {techListItem.icon}
             <span>{techListItem.name}</span>
           </AnimatedListItem>

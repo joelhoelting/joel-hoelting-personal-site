@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledAnimatedListItem = styled.li`
@@ -25,6 +26,7 @@ const AnimatedListItem = ({
   children,
   className,
   idx,
+  lineDuration,
   staggerInterval,
   transitionDuration,
   visible
@@ -34,13 +36,17 @@ const AnimatedListItem = ({
       className={className}
       visible={visible}
       style={{
-        transitionDelay: `${(staggerInterval || 100) * (idx + 1)}ms`
+        transitionDelay: `${(staggerInterval || 100) * (idx + 1) + lineDuration + 500}ms`
       }}
       transitionDuration={transitionDuration}
     >
       {children}
     </StyledAnimatedListItem>
   );
+};
+
+AnimatedListItem.propTypes = {
+  lineDuration: PropTypes.number.isRequired
 };
 
 export default AnimatedListItem;

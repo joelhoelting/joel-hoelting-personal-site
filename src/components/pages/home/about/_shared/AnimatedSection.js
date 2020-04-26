@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 
@@ -8,10 +9,13 @@ const AnimatedSectionWrapper = styled.div`
   flex-direction: column;
   .date {
     margin: 1em 0;
+    &.date__start-date {
+      opacity: ${props => (props.visible ? 1 : 0)};
+      transition: ${props => `opacity 500ms ease`};
+    }
     &.date__end-date {
       opacity: ${props => (props.visible ? 1 : 0)};
-      transition: opacity 500ms ease 3500ms;
-      transition: ${props => (props.visible ? 'opacity 500ms ease 3500ms' : 'opacity 200ms ease')};
+      transition: ${props => `opacity 500ms ease ${props.lineDuration}ms`};
     }
   }
   .left {
@@ -43,17 +47,26 @@ const AnimatedSectionWrapper = styled.div`
       opacity: ${props => (props.visible ? 1 : 0)};
       height: ${props => (props.visible ? '100%' : '0')};
       transition: ${props =>
-        props.visible
-          ? 'opacity 3000ms ease 500ms, height 3000ms ease 500ms'
-          : 'opacity 500ms ease, height 500ms ease'};
+        `opacity ${props.lineDuration}ms ease, height ${props.lineDuration}ms ease`};
     }
     .list-description {
       margin-bottom: 1em;
+      opacity: ${props => (props.visible ? 1 : 0)};
+      transition: ${props => `opacity 500ms ease ${props.lineDuration + 500}ms`};
     }
   }
 `;
 
-const AboutSection = ({ children, endDate, heading, listDescription, startDate, subHeading }) => {
+const AnimatedSection = ({
+  children,
+  bottomOffset,
+  endDate,
+  heading,
+  lineDuration,
+  listDescription,
+  startDate,
+  subHeading
+}) => {
   const [visible, setVisibility] = useState(false);
 
   const childrenWithProps = React.Children.map(children, child =>
@@ -62,14 +75,14 @@ const AboutSection = ({ children, endDate, heading, listDescription, startDate, 
 
   return (
     <Waypoint
+      bottomOffset={bottomOffset || 0}
       onEnter={() => setVisibility(true)}
-      onLeave={() => {
-        setVisibility(false);
-      }}
+      // onLeave={() => {
+      //   setVisibility(false);
+      // }}
     >
-      <AnimatedSectionWrapper visible={visible}>
-        {endDate && <p className="center uppercase date">{startDate}</p>}
-
+      <AnimatedSectionWrapper lineDuration={lineDuration} visible={visible}>
+        {startDate && <p className="center uppercase date date__start-date">{startDate}</p>}
         <div className="row">
           <div className="left">
             <h3 className="heading">{heading}</h3>
@@ -87,4 +100,13 @@ const AboutSection = ({ children, endDate, heading, listDescription, startDate, 
   );
 };
 
-export default AboutSection;
+AnimatedSection.propTypes = {
+  heading: PropTypes.string.isRequired,
+  lineDuration: PropTypes.number.isRequired,
+  listDescription: PropTypes.string,
+  subHeading: PropTypes.string,
+  endDate: PropTypes.string,
+  startDate: PropTypes.string
+};
+
+export default AnimatedSection;

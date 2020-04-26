@@ -9,8 +9,10 @@ const ExperienceSection = ({ sectionData }) => {
 
   return (
     <AnimatedSection
+      bottomOffset="200px"
       endDate={endDate}
       heading={heading}
+      lineDuration={2000}
       listDescription={listDescription}
       subHeading={subHeading}
       startDate={startDate}
@@ -21,7 +23,7 @@ const ExperienceSection = ({ sectionData }) => {
             className={className}
             idx={idx}
             key={`${className}-${idx}`}
-            // staggerInterval={400}
+            lineDuration={2000}
             transitionDuration={500}
           >
             <span>&#10095; {experienceListItem}</span>

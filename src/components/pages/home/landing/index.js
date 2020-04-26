@@ -6,7 +6,6 @@ import Particles from 'react-particles-js';
 import Context from '~/context';
 
 import AnimatedTitle from './AnimatedTitle';
-import AnimatedButton from '~/components/buttons/AnimatedButton';
 import ContinueButton from './ContinueButton';
 
 const LandingContainer = styled(Element)`

@@ -7,8 +7,9 @@ import { cycleStrokeColors } from '~/styles/animations';
 const AnimatedButtonWrapper = styled.button`
   background: none;
   border: none;
-  width: ${props => `${props.width}px`};
+  color: ${props => props.theme.color};
   height: ${props => `${props.width / 5}px`};
+  width: ${props => `${props.width}px`};
   text-align: center;
   text-transform: uppercase;
   position: relative;
@@ -16,10 +17,7 @@ const AnimatedButtonWrapper = styled.button`
   font-size: ${props => props.fontSize || '.6em'};
   letter-spacing: 2px;
   padding: 0;
-  ${'' /* transition: opacity 300ms ease;
-  opacity: ${props => (props.visible ? 1 : 0)}; */}
   cursor: pointer;
-  ${'' /* outline: none; */}
 
   svg,
   rect {
@@ -35,22 +33,30 @@ const AnimatedButtonWrapper = styled.button`
     animation: 6s linear infinite ${cycleStrokeColors};
     stroke-dasharray: ${props => props.strokeDashArray};
     stroke-dashoffset: 0;
-    stroke-width: 4;
+    stroke-width: ${props => props.strokeWidth || 4};
     transition: all 500ms;
 
     &:hover {
       fill: ${props => props.theme.continueBtnFill};
       stroke-dashoffset: ${props => props.hoverStrokeDashOffset};
-      stroke-width: 8;
+      stroke-width: ${props => props.hoverStrokeWidth || 8};
     }
   }
 `;
 
-const AnimatedButton = ({ buttonText, fontSize, width }) => {
+const AnimatedButton = ({ buttonText, fontSize, strokeWidth, hoverStrokeWidth, width }) => {
   const height = width / 5;
   const strokeDashArray = height * 2 + width * 2;
   const hoverStrokeDashOffset = height * 2 + width;
-  const buttonProps = { fontSize, height, width, hoverStrokeDashOffset, strokeDashArray };
+  const buttonProps = {
+    fontSize,
+    height,
+    width,
+    hoverStrokeDashOffset,
+    hoverStrokeWidth,
+    strokeDashArray,
+    strokeWidth
+  };
 
   return (
     <>
@@ -66,6 +72,8 @@ const AnimatedButton = ({ buttonText, fontSize, width }) => {
 
 AnimatedButton.propTypes = {
   buttonText: PropTypes.string,
+  hoverStrokeWidth: PropTypes.number,
+  strokeWidth: PropTypes.number,
   width: PropTypes.number.isRequired
 };
 
