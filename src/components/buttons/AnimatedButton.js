@@ -4,18 +4,21 @@ import styled from 'styled-components';
 
 import { cycleStrokeColors } from '~/styles/animations';
 
-const AnimatedButtonWrapper = styled.a`
-  width: ${props => props.width || '300px'};
-  height: ${props => props.height || '60px'};
+const AnimatedButtonWrapper = styled.button`
+  background: none;
+  border: none;
+  width: ${props => `${props.width}px`};
+  height: ${props => `${props.width / 5}px`};
   text-align: center;
   text-transform: uppercase;
   position: relative;
-  line-height: ${props => props.height || '60px'};
+  line-height: ${props => `${props.width / 5}px`};
   font-size: ${props => props.fontSize || '.6em'};
   letter-spacing: 2px;
-  transition: opacity 300ms ease;
-  opacity: ${props => (props.visible ? 1 : 0)};
+  ${'' /* transition: opacity 300ms ease;
+  opacity: ${props => (props.visible ? 1 : 0)}; */}
   cursor: pointer;
+  outline: none;
 
   svg,
   rect {
@@ -29,27 +32,32 @@ const AnimatedButtonWrapper = styled.a`
 
   svg rect {
     animation: 6s linear infinite ${cycleStrokeColors};
-    stroke-dasharray: ${props => props.strokeDashArray || 720};
+    stroke-dasharray: ${props => props.strokeDashArray};
     stroke-dashoffset: 0;
     stroke-width: 4;
     transition: all 500ms;
 
     &:hover {
-      stroke-dashoffset: ${props => props.hoverStrokeDashOffset || 420};
-      stroke-width: ${props => props.hoverStrokeWidth || 8};
       fill: ${props => props.theme.continueBtnFill};
+      stroke-dashoffset: ${props => props.hoverStrokeDashOffset};
+      stroke-width: 8;
     }
   }
 `;
 
-const AnimatedButton = props => {
+const AnimatedButton = ({ buttonText, fontSize, width }) => {
+  const height = width / 5;
+  const strokeDashArray = height * 2 + width * 2;
+  const hoverStrokeDashOffset = height * 2 + width;
+  const buttonProps = { fontSize, height, width, hoverStrokeDashOffset, strokeDashArray };
+
   return (
     <>
-      <AnimatedButtonWrapper {...props}>
+      <AnimatedButtonWrapper {...buttonProps}>
         <svg>
           <rect></rect>
         </svg>
-        {props.buttonText}
+        {buttonText || 'Button'}
       </AnimatedButtonWrapper>
     </>
   );
@@ -57,12 +65,7 @@ const AnimatedButton = props => {
 
 AnimatedButton.propTypes = {
   buttonText: PropTypes.string,
-  fontSize: PropTypes.string,
-  height: PropTypes.string,
-  width: PropTypes.string,
-  strokeDashArray: PropTypes.number,
-  hoverStrokeDashOffset: PropTypes.number,
-  hoverStrokeWidth: PropTypes.number
+  width: PropTypes.number.isRequired
 };
 
 export default AnimatedButton;

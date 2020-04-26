@@ -23,6 +23,7 @@ const TypographyStyles = createGlobalStyle`
   }
 
   button {
+    color: ${props => props.theme.color};
     font-family: 'Montserrat', sans-serif;
   }
 

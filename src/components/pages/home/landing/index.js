@@ -6,6 +6,7 @@ import Particles from 'react-particles-js';
 import Context from '~/context';
 
 import AnimatedTitle from './AnimatedTitle';
+import AnimatedButton from '~/components/buttons/AnimatedButton';
 import ContinueButton from './ContinueButton';
 
 const LandingContainer = styled(Element)`
@@ -104,6 +105,7 @@ const Landing = () => {
         <AnimatedTitle />
         <h2 className="subtitle light">Full Stack Web Developer</h2>
         <ContinueButton />
+        <AnimatedButton width={300} />
       </div>
     </LandingContainer>
   );
