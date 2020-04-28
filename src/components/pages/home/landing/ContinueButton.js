@@ -40,7 +40,7 @@ const ContinueButton = () => {
         onMouseEnter={() => setButtonHoverState(true)}
         onMouseLeave={() => setButtonHoverState(false)}
       >
-        <AnimatedButton buttonText="continue" width={300} />
+        <AnimatedButton buttonText="continue" width={300} strokeWidth={5} hoverStrokeWidth={10} />
       </ContinueButtonLink>
       <DoubleArrows active={buttonVisible && buttonHoverState} />
     </>
