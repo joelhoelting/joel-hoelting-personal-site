@@ -17,6 +17,7 @@ const Contact = () => {
           <h2 className="center">Contact Me</h2>
         </div>
         <KozakuraInput />
+        <KozakuraInput />
       </ContactContainer>
     </>
   );
