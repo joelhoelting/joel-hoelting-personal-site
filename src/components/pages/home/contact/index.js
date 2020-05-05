@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Divider from '~/components/shared/Divider';
-import KozakuraInput from './KozakuraInput';
+import ContactForm from './ContactForm';
 
 const ContactContainer = styled.div`
-  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const Contact = () => {
@@ -13,11 +15,7 @@ const Contact = () => {
     <>
       <Divider />
       <ContactContainer name="contact" className="container">
-        <div className="row">
-          <h2 className="center">Contact Me</h2>
-        </div>
-        <KozakuraInput />
-        <KozakuraInput />
+        <ContactForm />
       </ContactContainer>
     </>
   );

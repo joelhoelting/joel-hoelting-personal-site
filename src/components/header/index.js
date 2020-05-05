@@ -8,7 +8,7 @@ import routes from '~/data/routes';
 import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
 
 const StyledHeader = styled.header`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 50px;
   display: flex;

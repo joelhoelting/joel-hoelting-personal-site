@@ -34,10 +34,12 @@ const AnimatedButtonWrapper = styled.button`
     stroke-dasharray: ${props => props.strokeDashArray};
     stroke-dashoffset: 0;
     stroke-width: ${props => props.strokeWidth || 4};
-    transition: all 500ms;
+    transition: all 500ms ease;
+    fill: ${props => props.theme.continueBtnFill};
+    fill-opacity: 0;
 
     &:hover {
-      fill: ${props => props.theme.continueBtnFill};
+      fill-opacity: 1;
       stroke-dashoffset: ${props => props.hoverStrokeDashOffset};
       stroke-width: ${props => props.hoverStrokeWidth || 8};
     }

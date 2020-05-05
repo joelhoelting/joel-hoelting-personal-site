@@ -16,7 +16,7 @@ const TypographyStyles = createGlobalStyle`
   h5 { font-size: 0.8em; }
   h6 { font-size: 0.7em; }
 
-  p, button, a, li, input, span {
+  p, button, a, li, input, label, textarea, span {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
     line-height: 1.4em;

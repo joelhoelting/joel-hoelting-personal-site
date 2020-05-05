@@ -21,3 +21,14 @@ export const cycleStrokeColors = keyframes`
     stroke: #ED1C24;
   }
 `;
+
+export const threeDotsBounceDelay = keyframes`
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 
+    
+  40% { 
+      transform: scale(1.0);
+    }
+  }
+`;

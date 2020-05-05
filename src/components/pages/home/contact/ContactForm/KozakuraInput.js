@@ -1,33 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+import { capitalizeFirstLetter } from '~/helpers/strings';
 
 const KozakuraWrapper = styled.div`
   position: relative;
   z-index: 1;
   display: inline-block;
-  margin: 1em;
-  max-width: 400px;
-  width: calc(100% - 2em);
+  margin: 8px 10px;
+  width: calc(50% - 20px);
   vertical-align: top;
   overflow: hidden;
-  padding-bottom: 1em;
-  &.input--filled {
+  padding-bottom: 16px;
+  &.filled {
     input {
-      transition: opacity 0s 0.35s;
       opacity: 1;
     }
     label {
-      transition-delay: 0.15s;
-      transform: translate3d(0, 0, 0);
-      span {
-        transition-delay: 0.15s;
-        transform: translate3d(0, -100%, 0);
-      }
+      transform: translate3d(12px, -12px, 0);
     }
     svg {
-      fill: #fff;
-      -webkit-transform: translate3d(-66.6%, 0, 0);
+      fill: ${props => props.theme.formInputBackground};
       transform: translate3d(-66.6%, 0, 0);
+    }
+  }
+
+  &.invalid {
+    svg {
+      fill: ${props => props.theme.formInputBackgroundInvalid};
     }
   }
 
@@ -35,35 +36,34 @@ const KozakuraWrapper = styled.div`
     position: relative;
     display: block;
     float: right;
-    padding: 0.25em 0.5em;
+    padding: 14px 12px;
     width: 100%;
     border: none;
     border-radius: 0;
     background: transparent;
-    color: #1586c7;
+    color: #fff;
     font-weight: 400;
-    font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-appearance: none; /* for box shadows to show on iOS */
-    margin-top: 1.25em;
-    font-size: 1.55em;
+    margin-top: 30px;
+    font-size: 14px;
     opacity: 0;
+    caret-color: white;
+    &:invalid {
+      border: green;
+    }
+
     &:focus {
       outline: none;
       opacity: 1;
     }
 
     &:focus + label {
-      transition-delay: 0.15s;
-      transform: translate3d(0, 0, 0);
-      span {
-        transition-delay: 0.15s;
-        transform: translate3d(0, -100%, 0);
-      }
+      transform: translate3d(12px, -12px, 0);
+      color: #fff;
     }
 
     &:focus ~ svg {
-      fill: #fff;
-      -webkit-transform: translate3d(-66.6%, 0, 0);
+      fill: ${props => props.theme.formInputBackgroundFocus};
       transform: translate3d(-66.6%, 0, 0);
     }
   }
@@ -71,11 +71,9 @@ const KozakuraWrapper = styled.div`
   label {
     display: inline-block;
     float: right;
-    padding: 0 0.25em;
-    width: 100%;
-    color: #6a7989;
+    color: #fff;
     font-weight: bold;
-    font-size: 70.25%;
+    font-size: 12px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-touch-callout: none;
@@ -86,62 +84,52 @@ const KozakuraWrapper = styled.div`
     user-select: none;
     text-align: left;
     position: absolute;
-    top: 1em;
+    top: 14px;
     pointer-events: none;
     overflow: hidden;
-    transform: translate3d(1em, 2.75em, 0);
+    transform: translate3d(12px, 32px, 0);
     transition: transform 0.3s;
-    span {
-      position: relative;
-      display: block;
-      padding: 0.25em 0;
-      width: 100%;
-      color: #fff;
-      transition: transform 0.3s;
-      &:after {
-        content: attr(data-content);
-        position: absolute;
-        font-weight: 800;
-        top: 100%;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        color: #fff;
-        padding: 0.25em 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.85em;
-      }
-    }
   }
 
   svg {
     position: absolute;
-    top: 0;
     left: 0;
-    fill: #1586c7;
+    fill: ${props => props.theme.formInputBackground};
     pointer-events: none;
-    top: 1em;
+    top: 16px;
     bottom: 0px;
-    height: 4.5em;
+    height: 72px;
     z-index: -1;
     transition: transform 0.7s, fill 0.7s;
     transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
   }
 `;
 
-const KozakuraInput = () => {
+const KozakuraInput = ({ field, type, handleBlur, handleChange, inputs, errors }) => {
+  const value = inputs[field];
+  const error = errors[field];
+
   return (
-    <KozakuraWrapper>
-      <input type="text" id="email" />
-      <label for="email">
-        <span data-content="email">Email</span>
-      </label>
+    <KozakuraWrapper className={`${value.length > 0 && 'filled'} ${error && 'invalid'}`}>
+      <input
+        type={type}
+        id={field}
+        name={field}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={value}
+      />
+      <label htmlFor={field}>{capitalizeFirstLetter(field)}</label>
       <svg width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
         <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z" />
       </svg>
     </KozakuraWrapper>
   );
+};
+
+KozakuraInput.propTypes = {
+  field: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default KozakuraInput;

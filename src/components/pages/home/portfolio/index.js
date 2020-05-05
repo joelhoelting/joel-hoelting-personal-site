@@ -12,7 +12,7 @@ const Portfolio = () => {
     <>
       <Divider />
       <PortfolioContainer name="portfolio" className="container">
-        <h1>Hello World</h1>
+        <h1>Portfolio Section</h1>
       </PortfolioContainer>
     </>
   );
