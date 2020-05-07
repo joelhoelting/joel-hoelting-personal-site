@@ -17,7 +17,8 @@ import {
   FontStyles,
   GlobalStyles,
   LayoutStyles,
-  TypographyStyles
+  TypographyStyles,
+  ResponsiveStyles
 } from '~/styles';
 
 import Header from '~/components/header';
@@ -30,6 +31,7 @@ const GlobalCSS = () => {
       <GlobalStyles />
       <LayoutStyles />
       <TypographyStyles />
+      <ResponsiveStyles />
     </>
   );
 };

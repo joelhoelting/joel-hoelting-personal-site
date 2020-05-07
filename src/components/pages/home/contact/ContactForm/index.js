@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 import FormLogic from './formLogic';
 
-import KozakuraInput from './KozakuraInput';
+import { mediaMin } from '~/styles/mediaQueries';
+
+import MobileInput from './MobileInput';
+import KozakuraDesktopInput from './KozakuraInput';
 import ThreeDots from '~/components/spinners/ThreeDots';
 
 const StyledContactForm = styled.form`
@@ -12,12 +15,14 @@ const StyledContactForm = styled.form`
   padding: 2em 0;
 
   h2 {
-    margin: 0.6em 0;
+    margin: 2em 0;
+    ${mediaMin.tabletLandscape`
+      margin: 0.6em 0;
+    `}
   }
 
   textarea {
-    margin: 0 10px;
-    width: calc(100% - 20px);
+    width: 100%;
     border: none;
     background: ${props => props.theme.formInputBackground};
     padding: 12px;
@@ -25,9 +30,17 @@ const StyledContactForm = styled.form`
     resize: none;
     color: #fff;
     font-size: 14px;
-    transition: all 400ms ease;
+    transition: all 500ms ease;
+    ${mediaMin.tabletLandscape`
+      width: calc(100% - 20px);
+      margin: 0 10px;
+    `}
+
     &.invalid {
       background: ${props => props.theme.formInputBackgroundInvalid};
+      &:focus {
+        background: ${props => props.theme.formInputBackgroundInvalid};
+      }
     }
     &::placeholder {
       color: #fff;
@@ -45,8 +58,8 @@ const StyledContactForm = styled.form`
   button {
     width: 100%;
     padding: 0;
-    margin: 25px 10px;
-    width: calc(100% - 20px);
+    margin: 25px 0;
+    width: 100%;
     height: 80px;
     border: none;
     background: ${props => props.theme.formInputBackground};
@@ -58,7 +71,18 @@ const StyledContactForm = styled.form`
     align-items: center;
     justify-content: center;
 
-    &:hover {
+    ${mediaMin.tabletLandscape`
+      width: calc(100% - 20px);
+      margin: 25px 10px;
+    `}
+
+    &:disabled {
+      cursor: initial;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not([disabled]) {
       background: ${props => props.theme.formInputBackgroundFocus};
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
@@ -95,21 +119,33 @@ const ContactForm = () => {
   return (
     <StyledContactForm onSubmit={handleSubmit}>
       <h2 className="center">Contact Me</h2>
-      <KozakuraInput
+      <MobileInput
+        field="name"
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        inputs={inputs}
+        errors={errors}
+      />
+      <MobileInput
+        field="email"
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        inputs={inputs}
+        errors={errors}
+      />
+      <KozakuraDesktopInput
         handleBlur={handleBlur}
         handleChange={handleChange}
         inputs={inputs}
         errors={errors}
         field="name"
-        type="text"
       />
-      <KozakuraInput
+      <KozakuraDesktopInput
         handleBlur={handleBlur}
         handleChange={handleChange}
         inputs={inputs}
         errors={errors}
         field="email"
-        type="text"
       />
       <textarea
         name="textarea"
@@ -119,7 +155,7 @@ const ContactForm = () => {
         className={errors.textarea ? 'invalid' : undefined}
         placeholder="Send me an email ..."
       />
-      <button type="submit" value="Submit">
+      <button type="submit" value="Submit" disabled={containsErrors || submitting}>
         {!submitting && <span>Send Email</span>}
         {submitting && <ThreeDots />}
       </button>

@@ -13,6 +13,7 @@ const KozakuraWrapper = styled.div`
   vertical-align: top;
   overflow: hidden;
   padding-bottom: 16px;
+
   &.filled {
     input {
       opacity: 1;
@@ -23,12 +24,6 @@ const KozakuraWrapper = styled.div`
     svg {
       fill: ${props => props.theme.formInputBackground};
       transform: translate3d(-66.6%, 0, 0);
-    }
-  }
-
-  &.invalid {
-    svg {
-      fill: ${props => props.theme.formInputBackgroundInvalid};
     }
   }
 
@@ -46,15 +41,10 @@ const KozakuraWrapper = styled.div`
     -webkit-appearance: none; /* for box shadows to show on iOS */
     margin-top: 30px;
     font-size: 14px;
-    opacity: 0;
     caret-color: white;
-    &:invalid {
-      border: green;
-    }
 
     &:focus {
       outline: none;
-      opacity: 1;
     }
 
     &:focus + label {
@@ -63,7 +53,10 @@ const KozakuraWrapper = styled.div`
     }
 
     &:focus ~ svg {
-      fill: ${props => props.theme.formInputBackgroundFocus};
+      fill: ${props =>
+        props.hasError
+          ? props.theme.formInputBackgroundInvalid
+          : props.theme.formInputBackgroundFocus};
       transform: translate3d(-66.6%, 0, 0);
     }
   }
@@ -94,7 +87,8 @@ const KozakuraWrapper = styled.div`
   svg {
     position: absolute;
     left: 0;
-    fill: ${props => props.theme.formInputBackground};
+    fill: ${props =>
+      props.hasError ? props.theme.formInputBackgroundInvalid : props.theme.formInputBackground};
     pointer-events: none;
     top: 16px;
     bottom: 0px;
@@ -105,14 +99,14 @@ const KozakuraWrapper = styled.div`
   }
 `;
 
-const KozakuraInput = ({ field, type, handleBlur, handleChange, inputs, errors }) => {
+const KozakuraInput = ({ field, handleBlur, handleChange, inputs, errors }) => {
   const value = inputs[field];
   const error = errors[field];
 
   return (
-    <KozakuraWrapper className={`${value.length > 0 && 'filled'} ${error && 'invalid'}`}>
+    <KozakuraWrapper className={`desktop ${value.length > 0 && 'filled'}`} hasError={error}>
       <input
-        type={type}
+        type="text"
         id={field}
         name={field}
         onBlur={handleBlur}
@@ -128,8 +122,7 @@ const KozakuraInput = ({ field, type, handleBlur, handleChange, inputs, errors }
 };
 
 KozakuraInput.propTypes = {
-  field: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  field: PropTypes.string.isRequired
 };
 
 export default KozakuraInput;

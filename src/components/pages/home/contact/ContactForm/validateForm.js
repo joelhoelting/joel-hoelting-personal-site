@@ -1,12 +1,12 @@
 import { validateEmail } from '~/helpers/validations';
 
-const validateForm = (values, targetName = false) => {
+const validateForm = values => {
   let errors = {};
 
   const { name, email, textarea } = values;
 
   const checkName = () => {
-    if (!name || name.length < 3) {
+    if (name.length < 3) {
       errors.name = true;
     }
   };
@@ -23,25 +23,9 @@ const validateForm = (values, targetName = false) => {
     }
   };
 
-  if (!targetName) {
-    checkName();
-    checkEmail();
-    checkMessage();
-  }
-
-  switch (targetName) {
-    case 'name':
-      checkName();
-      break;
-    case 'email':
-      checkEmail();
-      break;
-    case 'textarea':
-      checkMessage();
-      break;
-    default:
-      break;
-  }
+  checkName();
+  checkEmail();
+  checkMessage();
 
   return errors;
 };

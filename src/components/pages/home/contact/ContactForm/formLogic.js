@@ -15,8 +15,9 @@ const FormLogic = () => {
     textarea: false
   });
 
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submissionAttempted, setSubmissionAttempted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -27,37 +28,56 @@ const FormLogic = () => {
     const formErrors = validateForm(inputs);
     setErrors(formErrors);
 
-    // const emailBody = {
-    //   to: 'joelhoelting@protonmail.com',
-    //   subject: `joelhoelting.com: ${name}`,
-    //   from: 'joelhoelting.com',
-    //   message: `Joel, you have a new email from: ${email}\n\n${textarea}`
-    // };
+    // Create breadcrumb of failed form submission
+    if (Object.values(formErrors).includes(true)) {
+      setSubmitting(false);
+      if (!submissionAttempted) {
+        setSubmissionAttempted(true);
+      }
+      return;
+    }
 
-    // fetch('http://localhost:3001/aws/email/send-ses-email', {
-    //   method: 'POST',
-    //   body: JSON.stringify(emailBody), // data can be `string` or {object}
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    //   .then(res => {})
-    //   // eslint-disable-next-line
-    //   .catch(error => console.error('Error:', error));
+    const emailBody = {
+      to: 'joelhoelting@protonmail.com',
+      subject: `joelhoelting.com: ${name}`,
+      from: 'joelhoelting.com',
+      message: `Joel, you have a new email from: ${email}\n\n${textarea}`
+    };
+
+    fetch('http://localhost:3001/aws/email/send-ses-email', {
+      method: 'POST',
+      body: JSON.stringify(emailBody), // data can be `string` or {object}
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        setTimeout(() => {
+          setSubmitting(false);
+          setSubmitted(true);
+        }, 1000);
+      })
+      // eslint-disable-next-line
+      .catch(error => {
+        setSubmitting(false);
+        console.error('Error:', error);
+      });
   };
 
   const handleChange = event => {
     event.persist();
-    setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
-  };
+    console.log(event.target.name, event.target.value);
+    const newInputs = { ...inputs, [event.target.name]: event.target.value };
+    setInputs(newInputs);
 
-  const handleBlur = e => {
-    const newError = validateForm(inputs, e.target.name);
-    setErrors(newError);
+    if (submissionAttempted) {
+      Object.values(errors).includes(true);
+      const newError = validateForm(newInputs);
+      setErrors(newError);
+    }
   };
 
   return {
-    handleBlur,
     handleChange,
     handleSubmit,
     inputs,

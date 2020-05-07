@@ -5,7 +5,7 @@ import Divider from '~/components/shared/Divider';
 import ContactForm from './ContactForm';
 
 const ContactContainer = styled.div`
-  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
 `;
