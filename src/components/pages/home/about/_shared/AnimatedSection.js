@@ -75,13 +75,7 @@ const AnimatedSection = ({
   );
 
   return (
-    <Waypoint
-      bottomOffset={bottomOffset || 0}
-      onEnter={() => setVisibility(true)}
-      // onLeave={() => {
-      //   setVisibility(false);
-      // }}
-    >
+    <Waypoint bottomOffset={bottomOffset || 0} onEnter={() => setVisibility(true)}>
       <AnimatedSectionWrapper lineDuration={lineDuration} visible={visible}>
         {startDate && <p className="center uppercase date date__start-date">{startDate}</p>}
         <div className="row">

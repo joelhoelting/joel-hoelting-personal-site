@@ -20,6 +20,15 @@ const TypographyStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
     line-height: 1.4em;
+    &.bold {
+      font-weight: bold;
+    }
+    &.bolder {
+      font-weight: bolder;
+    }
+    &.italic {
+      font-style: italic;
+    }
   }
 
   a {

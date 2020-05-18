@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSVG = styled.svg`
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   fill: ${props => props.theme.color};
 `;
 
