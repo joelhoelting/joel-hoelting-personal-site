@@ -5,8 +5,11 @@ import Particles from 'react-particles-js';
 
 import Context from '~/context';
 
+import { mediaMax } from '~/styles/mediaQueries';
 import AnimatedTitle from './AnimatedTitle';
+import AnimatedTitleMobile from './AnimatedTitleMobile';
 import ContinueButton from './ContinueButton';
+import ContinueButtonMobile from './ContinueButtonMobile';
 
 const LandingContainer = styled(Element)`
   height: 100%;
@@ -34,7 +37,10 @@ const LandingContainer = styled(Element)`
     width: 60%;
     h2.subtitle {
       margin: 0.5em 0;
-      letter-spacing: 10px;
+      font-size: 1em;
+      ${mediaMax.tabletLandscape`
+        display: none;
+      `}
     }
   }
 `;
@@ -45,7 +51,7 @@ const Landing = () => {
 
   return (
     <LandingContainer name="landing">
-      {/* {darkModeActive && (
+      {darkModeActive && (
         <Particles
           params={{
             particles: {
@@ -98,12 +104,13 @@ const Landing = () => {
             retina_detect: true
           }}
         />
-      )} */}
-
+      )}
       <div className="cta-container">
         <AnimatedTitle />
+        <AnimatedTitleMobile />
         <h2 className="subtitle light">Full Stack Web Developer</h2>
         <ContinueButton />
+        <ContinueButtonMobile />
       </div>
     </LandingContainer>
   );

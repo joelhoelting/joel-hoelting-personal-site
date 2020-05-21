@@ -62,18 +62,18 @@ const AnimatedButton = ({ buttonText, fontSize, strokeWidth, hoverStrokeWidth, w
 
   return (
     <>
-      <AnimatedButtonWrapper {...buttonProps}>
+      <AnimatedButtonWrapper className="desktop" {...buttonProps}>
         <svg>
           <rect></rect>
         </svg>
-        {buttonText || 'Button'}
+        {buttonText}
       </AnimatedButtonWrapper>
     </>
   );
 };
 
 AnimatedButton.propTypes = {
-  buttonText: PropTypes.string,
+  buttonText: PropTypes.string.isRequired,
   hoverStrokeWidth: PropTypes.number,
   strokeWidth: PropTypes.number,
   width: PropTypes.number.isRequired

@@ -1,21 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import styled, { keyframes } from 'styled-components';
-
-const drawLine = keyframes`
-  25% {
-    fill-opacity: 0;
-  }
-
-  60% {
-    fill-opacity: 1;
-  }
-
-  100% {
-    fill-opacity: 1;
-    stroke-dashoffset: 0;
-  }
-`;
+import { drawLine } from '~/styles/animations';
 
 const StyledSVG = styled.svg`
   max-width: 1000px;
@@ -33,7 +19,7 @@ const StyledSVG = styled.svg`
 
 const AnimatedTitle = () => {
   return (
-    <StyledSVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1356.8 181.5">
+    <StyledSVG className="desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1356.8 181.5">
       <title>Joel Hoelting</title>
       <path
         id="J"

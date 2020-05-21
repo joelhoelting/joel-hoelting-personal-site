@@ -1,5 +1,20 @@
 import { keyframes } from 'styled-components';
 
+export const drawLine = keyframes`
+  25% {
+    fill-opacity: 0;
+  }
+
+  60% {
+    fill-opacity: 1;
+  }
+
+  100% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+  }
+`;
+
 export const cycleBorderColors = keyframes`
   0% {
     border-color: #ED1C24;

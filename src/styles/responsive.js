@@ -1,16 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
-import { sizes } from './mediaQueries';
+import { mediaMin, mediaMax } from './mediaQueries';
 
 const ResponsiveStyles = createGlobalStyle`
   .mobile {
-    @media only screen and (min-width: ${sizes.tabletLandscape}px) {
+    ${mediaMin.tabletLandscape`
       display: none;
-    }
+    `}
   }
   .desktop {
-    @media only screen and (max-width: ${sizes.tabletLandscape}px) {
+    ${mediaMax.tabletLandscape`
       display: none;
-    }
+    `}
   }
 `;
 
