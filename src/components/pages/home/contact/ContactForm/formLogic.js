@@ -44,7 +44,7 @@ const FormLogic = () => {
       message: `Joel, you have a new email from: ${email}\n\n${textarea}`
     };
 
-    fetch('http://localhost:3001/aws/email/send-ses-email', {
+    fetch('https://api.joelhoelting.com/aws/email/send-ses-email', {
       method: 'POST',
       body: JSON.stringify(emailBody), // data can be `string` or {object}
       headers: {
