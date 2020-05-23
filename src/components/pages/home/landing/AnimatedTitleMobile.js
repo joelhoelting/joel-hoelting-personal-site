@@ -7,6 +7,8 @@ const StyledSVG = styled.svg`
   max-width: 1000px;
   stroke-width: 2;
   width: 100%;
+  margin: 1em 0;
+  max-width: 400px;
   path {
     stroke: ${props => props.theme.color};
     fill: ${props => props.theme.color};

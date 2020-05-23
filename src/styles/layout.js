@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { mediaMin } from '~/styles/mediaQueries';
 
 const LayoutStyles = createGlobalStyle`
   .row {
@@ -7,6 +8,12 @@ const LayoutStyles = createGlobalStyle`
     &.row--center {
       align-items: center;
       justify-content: center;
+    }
+    &.row--column-mobile {
+      flex-direction: column;
+      ${mediaMin.tabletLandscape`
+        flex-direction: row;
+      `}
     }
   }
 `;

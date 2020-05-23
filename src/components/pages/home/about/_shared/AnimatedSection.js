@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 
+import { mediaMin } from '~/styles/mediaQueries';
+
 const AnimatedSectionWrapper = styled.div`
   margin: 2em 0;
   display: flex;
@@ -20,10 +22,14 @@ const AnimatedSectionWrapper = styled.div`
   }
   .left {
     display: flex;
-    padding-right: 2em;
     flex-direction: column;
-    align-items: flex-end;
-    width: 50%;
+    width: 100%;
+    ${mediaMin.tabletLandscape`
+      padding-right: 2em;
+      width: 50%;
+      align-items: flex-end;
+    `}
+
     h3.heading {
       opacity: ${props => (props.visible ? 1 : 0)};
       transition: opacity 500ms ease;
@@ -36,10 +42,15 @@ const AnimatedSectionWrapper = styled.div`
     }
   }
   .right {
-    padding-left: 2em;
-    width: 50%;
     max-width: 700px;
     position: relative;
+    width: 100%;
+    padding-left: 2em;
+    margin-top: 2em;
+    ${mediaMin.tabletLandscape`
+      margin-top: 0;
+      width: 50%;
+    `}
     .left-line {
       border-left: 1px solid ${props => props.theme.color};
       position: absolute;
@@ -78,7 +89,7 @@ const AnimatedSection = ({
     <Waypoint bottomOffset={bottomOffset || 0} onEnter={() => setVisibility(true)}>
       <AnimatedSectionWrapper lineDuration={lineDuration} visible={visible}>
         {startDate && <p className="center uppercase date date__start-date">{startDate}</p>}
-        <div className="row">
+        <div className="row row--column-mobile">
           <div className="left">
             <h3 className="heading">{heading}</h3>
             {subHeading && <p className="subheading">{subHeading}</p>}

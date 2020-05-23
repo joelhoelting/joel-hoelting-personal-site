@@ -51,7 +51,7 @@ const Landing = () => {
 
   return (
     <LandingContainer name="landing">
-      {darkModeActive && (
+      {/* {darkModeActive && (
         <Particles
           params={{
             particles: {
@@ -104,7 +104,7 @@ const Landing = () => {
             retina_detect: true
           }}
         />
-      )}
+      )} */}
       <div className="cta-container">
         <AnimatedTitle />
         <AnimatedTitleMobile />

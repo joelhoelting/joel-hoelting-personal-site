@@ -3,9 +3,10 @@ import { mediaMin } from '~/styles/mediaQueries';
 
 const ContainerStyles = createGlobalStyle`
   .container {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     ${mediaMin.tabletLandscape`
+      width: 90%;
       padding: 5em 0;
     `}
   }

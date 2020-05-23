@@ -4,19 +4,38 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
+import { mediaMin } from '~/styles/mediaQueries';
+
 const BioWrapper = styled.div`
-  padding: 6em 0;
+  padding: 3em 0;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  ${mediaMin.tabletLandscape`
+    padding: 6em 0;
+    flex-direction: row;
+  `}
   .photo {
-    width: 50%;
-    padding: 0 10%;
+    width: 100%;
+    max-width: 400px;
+    ${mediaMin.tabletLandscape`
+      max-width: none;
+      padding: 0 10%;
+      width: 50%;
+    `}
     .gatsby-image-wrapper {
       border: 1px solid white;
     }
   }
   .summary {
-    width: 50%;
+    width: 100%;
+    max-width: 400px;
+    margin: 2em 0;
+    ${mediaMin.tabletLandscape`
+      margin: none;
+      max-width: none;
+      width: 50%;
+    `}
     p {
       max-width: 500px;
     }
