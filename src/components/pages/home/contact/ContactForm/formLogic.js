@@ -44,7 +44,12 @@ const FormLogic = () => {
       message: `Joel, you have a new email from: ${email}\n\n${textarea}`
     };
 
-    fetch('https://api.joelhoelting.com/aws/email/send-ses-email', {
+    const apiRootURL =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3001'
+        : 'https://api.joelhoelting.com';
+
+    fetch(`${apiRootURL}/aws/email/send-ses-email`, {
       method: 'POST',
       body: JSON.stringify(emailBody), // data can be `string` or {object}
       headers: {
