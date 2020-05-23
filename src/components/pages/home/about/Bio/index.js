@@ -7,12 +7,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { mediaMin } from '~/styles/mediaQueries';
 
 const BioWrapper = styled.div`
-  padding: 3em 0;
+  padding: 4em 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   ${mediaMin.tabletLandscape`
-    padding: 6em 0;
+    padding: 5em 0 10em;
     flex-direction: row;
   `}
   .photo {

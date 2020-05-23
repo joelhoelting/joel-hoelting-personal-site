@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AnimatedSection from '../_shared/AnimatedSection';
+import AnimatedSection from '../../_shared/AnimatedSection';
 
 const EducationSection = ({ sectionData }) => {
   const { endDate, heading, listDescription, subHeading, startDate } = sectionData;
@@ -14,6 +14,7 @@ const EducationSection = ({ sectionData }) => {
       listDescription={listDescription}
       subHeading={subHeading}
       startDate={startDate}
+      noListItems
     />
   );
 };

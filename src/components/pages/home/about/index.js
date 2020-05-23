@@ -38,6 +38,7 @@ const About = () => {
       <Divider />
       <AboutContainer name="about" className="container">
         <Bio />
+        <Divider />
         <Tech className="about-section" />
         <Experience className="about-section" />
         <Education className="about-section" />

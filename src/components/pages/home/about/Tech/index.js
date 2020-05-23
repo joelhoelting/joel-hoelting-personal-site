@@ -3,10 +3,12 @@ import TechSection from './TechSection';
 
 import techItemsArray from '~/data/tech';
 
+import { StyledCategoryTitle } from '../../_shared/styles';
+
 const Tech = props => {
   return (
     <div {...props}>
-      <h3 className="center desktop">Tech</h3>
+      <StyledCategoryTitle className="center">Tech</StyledCategoryTitle>
       {techItemsArray.map((techObj, idx) => (
         <TechSection key={`tech-section-${idx}`} sectionData={techObj} />
       ))}

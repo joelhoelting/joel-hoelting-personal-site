@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AnimatedSection from '../_shared/AnimatedSection';
-import AnimatedListItem from '../_shared/AnimatedListItem';
+import AnimatedSection from '../../_shared/AnimatedSection';
+import AnimatedListItem from '../../_shared/AnimatedListItem';
 
 const ExperienceSection = ({ sectionData }) => {
   const { endDate, heading, listDescription, listItems, subHeading, startDate } = sectionData;

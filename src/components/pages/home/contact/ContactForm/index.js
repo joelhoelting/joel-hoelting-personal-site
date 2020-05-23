@@ -45,6 +45,7 @@ const StyledContactForm = styled.form`
     &::placeholder {
       color: #fff;
       font-size: 14px;
+      opacity: 1;
     }
 
     &:focus {

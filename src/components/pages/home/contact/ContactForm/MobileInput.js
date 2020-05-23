@@ -16,6 +16,11 @@ const StyledMobileInput = styled.input`
   caret-color: #fff;
   transition: background 500ms ease;
 
+  &::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
   &:focus {
     background: ${props =>
       props.hasError

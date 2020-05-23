@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 
-import { mediaMin } from '~/styles/mediaQueries';
+import { mediaMax, mediaMin } from '~/styles/mediaQueries';
 
 const AnimatedSectionWrapper = styled.div`
-  margin: 2em 0;
+  margin: 4em 0;
   display: flex;
   flex-direction: column;
+  ${mediaMin.tabletLandscape`
+    margin: 2em 0;
+  `}
   .date {
     margin: 1em 0;
     &.date__start-date {
@@ -33,9 +36,20 @@ const AnimatedSectionWrapper = styled.div`
     h3.heading {
       opacity: ${props => (props.visible ? 1 : 0)};
       transition: opacity 500ms ease;
+      ${mediaMax.tabletLandscape`
+        margin-bottom: .2em;
+      `}
     }
     p.subheading {
-      margin: 0.4em;
+      margin: 0.4em 0;
+      opacity: ${props => (props.visible ? 0.5 : 0)};
+      text-transform: uppercase;
+      transition: opacity 500ms ease;
+      ${mediaMax.tabletLandscape`
+        margin: 0.2em 0;
+      `}
+    }
+    p.mobile-subheading {
       opacity: ${props => (props.visible ? 0.5 : 0)};
       text-transform: uppercase;
       transition: opacity 500ms ease;
@@ -62,9 +76,14 @@ const AnimatedSectionWrapper = styled.div`
         `opacity ${props.lineDuration}ms ease, height ${props.lineDuration}ms ease`};
     }
     .list-description {
-      margin-bottom: 1em;
+      font-size: 0.8em;
+      margin-bottom: ${props => (!props.noListItems ? '1em' : 0)};
+      transform: ${props => (props.visible ? 'translateX(0)' : 'translateX(20px)')};
       opacity: ${props => (props.visible ? 1 : 0)};
-      transition: ${props => `opacity 500ms ease ${props.lineDuration + 500}ms`};
+      transition: ${props => `all 500ms ease ${props.lineDuration - 500}ms`};
+      ${mediaMin.tabletLandscape`
+        font-size: 1em;
+      `}
     }
   }
 `;
@@ -76,6 +95,7 @@ const AnimatedSection = ({
   heading,
   lineDuration,
   listDescription,
+  noListItems,
   startDate,
   subHeading
 }) => {
@@ -87,12 +107,19 @@ const AnimatedSection = ({
 
   return (
     <Waypoint bottomOffset={bottomOffset || 0} onEnter={() => setVisibility(true)}>
-      <AnimatedSectionWrapper lineDuration={lineDuration} visible={visible}>
-        {startDate && <p className="center uppercase date date__start-date">{startDate}</p>}
+      <AnimatedSectionWrapper
+        lineDuration={lineDuration}
+        noListItems={noListItems}
+        visible={visible}
+      >
+        {startDate && <p className="desktop center uppercase date date__start-date">{startDate}</p>}
         <div className="row row--column-mobile">
           <div className="left">
             <h3 className="heading">{heading}</h3>
             {subHeading && <p className="subheading">{subHeading}</p>}
+            {startDate && endDate && (
+              <p className="mobile mobile-subheading">{`${startDate} - ${endDate}`}</p>
+            )}
           </div>
           <div className="right">
             <div className="left-line" />
@@ -100,7 +127,7 @@ const AnimatedSection = ({
             <ul>{childrenWithProps}</ul>
           </div>
         </div>
-        {endDate && <p className="center uppercase date date__end-date">{endDate}</p>}
+        {endDate && <p className="desktop center uppercase date date__end-date">{endDate}</p>}
       </AnimatedSectionWrapper>
     </Waypoint>
   );

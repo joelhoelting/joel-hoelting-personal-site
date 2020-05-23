@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { mediaMin } from '~/styles/mediaQueries';
 
+import { StyledCategoryTitle } from '../_shared/styles';
+
 import Divider from '~/components/shared/Divider';
 
 import portfolioArray from '~/data/portfolio';
@@ -30,7 +32,7 @@ const Portfolio = () => {
     <>
       <Divider />
       <PortfolioContainer name="portfolio" className="container">
-        <h2 className="center">Portfolio</h2>
+        <StyledCategoryTitle className="center">Portfolio</StyledCategoryTitle>
         <PortfolioCardContainer>
           {portfolioArray.map((portfolioObj, idx) => (
             <PortfolioCard key={`portfolio-card-${idx}`} cardData={portfolioObj} />

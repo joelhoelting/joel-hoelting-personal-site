@@ -3,25 +3,41 @@ import styled from 'styled-components';
 
 import { cycleBorderColors } from '~/styles/animations';
 
+import { mediaMin } from '~/styles/mediaQueries';
+
 const PortfolioCardContainer = styled.div`
-  width: 46%;
-  margin: 2%;
+  width: 100%;
   border-width: 2px;
   border-style: solid;
   animation: 6s linear infinite ${cycleBorderColors};
-  padding: 2em;
+  margin: 1em 0;
+  padding: 1em;
+  ${mediaMin.tabletLandscape`
+    margin: 0.6em 0;
+    padding: 2em;
+    width: 46%;
+    margin: 2%;
+  `}
+
   .title {
     margin-bottom: 1em;
     letter-spacing: 2px;
+    font-size: 0.8em;
+    ${mediaMin.tabletLandscape`
+      font-size: 1em;
+    `}
   }
+
   .description {
     font-size: 0.8em;
     margin: 0.5em 0;
   }
+
   .stack {
     font-size: 0.8em;
     opacity: 0.5;
   }
+
   .source-button {
     display: inline-block;
     margin-top: 2em;

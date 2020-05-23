@@ -14,7 +14,7 @@ const Contact = () => {
   return (
     <>
       <Divider />
-      <ContactContainer name="contact" className="container">
+      <ContactContainer name="contact" className="container contact-container">
         <ContactForm />
       </ContactContainer>
     </>
