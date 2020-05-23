@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Context from '~/context';
 
@@ -12,6 +12,7 @@ export const defaultState = {
 
 const ContextProvider = props => {
   const [darkModeActive, setdarkModeActive] = useState(true);
+  const [particlesActive, setParticlesActive] = useState(true);
 
   const toggleDarkMode = () => {
     setdarkModeActive(!darkModeActive);
@@ -22,7 +23,9 @@ const ContextProvider = props => {
       value={{
         ...props,
         darkModeActive,
-        toggleDarkMode
+        toggleDarkMode,
+        particlesActive,
+        setParticlesActive
       }}
     >
       {props.children}

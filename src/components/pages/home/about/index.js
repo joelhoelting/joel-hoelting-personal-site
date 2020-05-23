@@ -10,11 +10,11 @@ import Education from './Education';
 import AnimatedButton from '~/components/buttons/AnimatedButton';
 import Divider from '~/components/shared/Divider';
 
-import ResumePDF from '~/assets/pdf/joel_hoelting_resume_2020.pdf';
+import ResumeLink from '~/components/links/ResumeLink';
 
 const ResumeButton = () => {
   return (
-    <a href={ResumePDF} target="_blank" rel="noopener noreferrer">
+    <ResumeLink>
       <AnimatedButton
         buttonText="Download Resume"
         fontSize="1em"
@@ -22,7 +22,7 @@ const ResumeButton = () => {
         hoverStrokeWidth={12}
         width={400}
       />
-    </a>
+    </ResumeLink>
   );
 };
 

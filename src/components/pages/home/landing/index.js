@@ -14,10 +14,6 @@ import ContinueButtonMobile from './ContinueButtonMobile';
 const LandingContainer = styled(Element)`
   height: 100%;
   width: 100%;
-  ${'' /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; */}
   font-size: 32px;
   position: relative;
   #tsparticles {
@@ -47,11 +43,12 @@ const LandingContainer = styled(Element)`
 
 const Landing = () => {
   const context = useContext(Context);
-  const { darkModeActive } = context;
+  const { particlesActive } = context;
+  console.log(particlesActive);
 
   return (
     <LandingContainer name="landing">
-      {darkModeActive && (
+      {particlesActive && (
         <Particles
           params={{
             particles: {

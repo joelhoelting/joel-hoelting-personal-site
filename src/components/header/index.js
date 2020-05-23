@@ -2,10 +2,14 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
 
-// import Context from '~/context';
+import Context from '~/context';
 
 import routes from '~/data/routes';
+import { mediaMin } from '~/styles/mediaQueries';
+
 import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
+
+import ResumeLink from '~/components/links/ResumeLink';
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -17,8 +21,9 @@ const StyledHeader = styled.header`
   z-index: 1;
   padding: 0 1em;
   background: ${props => props.theme.headerBackground};
-  transition: transform 300ms ease;
+  transition: transform 300ms ease, opacity 300ms ease;
   transform: ${props => (props.visible ? 'translateX(0%)' : 'translateY(-100%)')};
+  opacity: ${props => (props.visible ? 1 : 0)};
   .landing-link {
     display: flex;
   }
@@ -36,6 +41,11 @@ const StyledHeader = styled.header`
           &.active {
             opacity: 1;
           }
+          &:hover {
+            ${mediaMin.tabletLandscape`
+              opacity: 1;
+            `}
+          }
         }
       }
     }
@@ -43,13 +53,26 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
-  // const context = useContext(Context);
-  // const { toggleDarkMode } = context;
+  const context = useContext(Context);
+  const { particlesActive, setParticlesActive } = context;
 
   const [activeElement, setActiveElement] = useState('landing');
 
-  const generateLinks = () =>
-    routes.map(route => (
+  const handleAnchorLinkChange = route => {
+    // Disable particles when scrolling below landing section
+    if (route !== 'landing' && particlesActive) {
+      setParticlesActive(false);
+    }
+
+    if (route === 'landing' && !particlesActive) {
+      setParticlesActive(true);
+    }
+
+    setActiveElement(route);
+  };
+
+  const generateLinks = () => {
+    let links = routes.map(route => (
       <li key={`${route}-link`}>
         <Link
           href={`#${route}`}
@@ -57,13 +80,24 @@ const Header = () => {
           spy
           smooth
           duration={600}
-          onSetActive={e => setActiveElement(e)}
+          onSetActive={e => {
+            handleAnchorLinkChange(e);
+          }}
           className="bold"
         >
           {route}
         </Link>
       </li>
     ));
+
+    links.push(
+      <li key={`resume-link`} className="desktop">
+        <ResumeLink className="bold">Resume</ResumeLink>
+      </li>
+    );
+
+    return links;
+  };
 
   return (
     <StyledHeader visible={activeElement !== 'landing'}>
@@ -73,13 +107,12 @@ const Header = () => {
         spy
         smooth
         duration={600}
-        onSetActive={e => setActiveElement(e)}
+        onSetActive={e => handleAnchorLinkChange(e)}
         className="landing-link"
       >
         <JoelHoeltingLogo />
       </Link>
       {/* <button onClick={toggleDarkMode}>Toggle Dark Mode</button> */}
-
       <nav>
         <ul>{generateLinks()}</ul>
       </nav>
