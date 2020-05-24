@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     title: `Joel Hölting`,
-    description: `Full stack software engineer and coding instructor with over two years of experience in Ruby, Javascript, Python and Node-based frameworks.`,
+    description: `Full stack software engineer and coding instructor with over two years of experience in Javascript, Ruby, Python and Node-based frameworks.`,
     author: `@gatsbyjs`
   },
   plugins: [
@@ -21,13 +21,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Joel Hoelting`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#2D3073`,
+        theme_color: `#2D3073`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+        icon: `src/images/joel_hoelting_logo.png` // This path is relative to the root of the site.
       }
     },
     {
