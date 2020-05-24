@@ -44,7 +44,6 @@ const LandingContainer = styled(Element)`
 const Landing = () => {
   const context = useContext(Context);
   const { particlesActive } = context;
-  console.log(particlesActive);
 
   return (
     <LandingContainer name="landing">
