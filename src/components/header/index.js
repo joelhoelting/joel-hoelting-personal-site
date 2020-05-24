@@ -12,7 +12,7 @@ import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
 import ResumeLink from '~/components/links/ResumeLink';
 
 const StyledHeader = styled.header`
-  position: fixed;
+  position: ${props => props.position};
   width: 100%;
   height: 40px;
   display: flex;
@@ -20,13 +20,23 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   z-index: 1;
   padding: 0 1em;
-  background: ${props => props.theme.headerBackground};
+  background: ${props =>
+    props.position === 'absolute' ? 'transparent' : props.theme.headerBackground};
   transition: transform 300ms ease, opacity 300ms ease;
   transform: ${props => (props.visible ? 'translateX(0%)' : 'translateY(-100%)')};
   opacity: ${props => (props.visible ? 1 : 0)};
+
   .landing-link {
     display: flex;
+    opacity: 0.8;
+    transition: opacity 300ms ease;
+    &:hover {
+      ${mediaMin.tabletLandscape`
+        opacity: 1;
+      `}
+    }
   }
+
   nav {
     ul {
       display: flex;
@@ -36,7 +46,7 @@ const StyledHeader = styled.header`
         a {
           letter-spacing: 2px;
           transition: opacity 300ms ease;
-          opacity: 0.5;
+          opacity: ${props => (props.position === 'absolute' ? 0.8 : 0.5)};
           font-size: 0.8em;
           &.active {
             opacity: 1;
@@ -52,7 +62,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = () => {
+const Header = ({ position }) => {
   const context = useContext(Context);
   const { particlesActive, setParticlesActive } = context;
 
@@ -81,7 +91,9 @@ const Header = () => {
           smooth
           duration={600}
           onSetActive={e => {
-            handleAnchorLinkChange(e);
+            if (position === 'fixed') {
+              handleAnchorLinkChange(e);
+            }
           }}
           className="bold"
         >
@@ -100,17 +112,24 @@ const Header = () => {
   };
 
   return (
-    <StyledHeader visible={activeElement !== 'landing'}>
+    <StyledHeader
+      position={position}
+      visible={position === 'absolute' ? true : activeElement !== 'landing'}
+    >
       <Link
         href={`#landing`}
         to="landing"
         spy
         smooth
         duration={600}
-        onSetActive={e => handleAnchorLinkChange(e)}
+        onSetActive={e => {
+          if (position === 'fixed') {
+            handleAnchorLinkChange(e);
+          }
+        }}
         className="landing-link"
       >
-        <JoelHoeltingLogo />
+        <JoelHoeltingLogo position={position} />
       </Link>
       {/* <button onClick={toggleDarkMode}>Toggle Dark Mode</button> */}
       <nav>

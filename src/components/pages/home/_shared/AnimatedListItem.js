@@ -11,7 +11,10 @@ const StyledAnimatedListItem = styled.li`
   opacity: ${props => (props.visible ? 1 : 0)};
   transform: ${props => (props.visible ? 'translateX(0)' : 'translateX(20px)')};
   transition: ${props =>
-    props.visible ? `all ${props.transitionDuration || 300}ms ease` : 'none'};
+    props.visible
+      ? `opacity ${props.transitionDuration || 300}ms ease, transform ${props.transitionDuration ||
+          300}ms ease`
+      : 'none'};
   &:not(:last-child) {
     margin-bottom: 1em;
   }

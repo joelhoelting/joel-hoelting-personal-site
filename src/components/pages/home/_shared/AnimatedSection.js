@@ -78,9 +78,11 @@ const AnimatedSectionWrapper = styled.div`
     .list-description {
       font-size: 0.8em;
       margin-bottom: ${props => (!props.noListItems ? '1em' : 0)};
-      transform: ${props => (props.visible ? 'translateX(0)' : 'translateX(20px)')};
       opacity: ${props => (props.visible ? 1 : 0)};
-      transition: ${props => `all 500ms ease ${props.lineDuration - 500}ms`};
+      transform: ${props => (props.visible ? 'translateX(0)' : 'translateX(20px)')};
+      transition: ${props =>
+        `opacity 500ms ease ${props.lineDuration -
+          500}ms, transform 500ms ease ${props.lineDuration - 500}ms`};
       ${mediaMin.tabletLandscape`
         font-size: 1em;
       `}

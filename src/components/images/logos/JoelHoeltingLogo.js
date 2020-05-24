@@ -7,13 +7,14 @@ const StyledSVG = styled.svg`
   fill: ${props => props.theme.color};
 `;
 
-const JoelHoeltingLogo = () => {
+const JoelHoeltingLogo = ({ position }) => {
   return (
     <StyledSVG
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 84.78 62.91"
+      position={position}
     >
       <title>joel_hoelting_logo</title>
       <path

@@ -9,6 +9,12 @@ const ContainerStyles = createGlobalStyle`
     &.contact-container {
       width: 90%;
     }
+    &.portfolio-container {
+      width: 90%;
+      ${mediaMin.tabletLandscape`
+        width: 80%;
+      `}
+    }
     ${mediaMin.tabletLandscape`
       padding: 5em 0;
     `}

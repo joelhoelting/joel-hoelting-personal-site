@@ -12,7 +12,7 @@ const AnimatedButtonWrapper = styled.button`
   color: ${props => props.theme.color};
   padding: 1em 4em;
   cursor: pointer;
-  font-size: 0.5em;
+  font-size: 0.8rem;
   text-transform: uppercase;
   margin: 1em 0;
 `;

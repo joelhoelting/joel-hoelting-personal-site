@@ -8,6 +8,7 @@ import Experience from './Experience';
 import Education from './Education';
 
 import AnimatedButton from '~/components/buttons/AnimatedButton';
+import AnimatedButtonMobile from '~/components/buttons/AnimatedButtonMobile';
 import Divider from '~/components/shared/Divider';
 
 import ResumeLink from '~/components/links/ResumeLink';
@@ -22,6 +23,7 @@ const ResumeButton = () => {
         hoverStrokeWidth={12}
         width={400}
       />
+      <AnimatedButtonMobile buttonText="Download Resume" />
     </ResumeLink>
   );
 };

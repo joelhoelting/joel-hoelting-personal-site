@@ -44,12 +44,14 @@ const FormLogic = () => {
       message: `Joel, you have a new email from: ${email}\n\n${textarea}`
     };
 
-    const apiRootURL =
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3001'
-        : 'https://api.joelhoelting.com';
+    const apiRootUrlDir = {
+      development: 'http://localhost:3001',
+      production: 'https://api.joelhoelting.com'
+    };
 
-    fetch(`${apiRootURL}/aws/email/send-ses-email`, {
+    console.log(apiRootUrlDir[process.env.NODE_ENV]);
+
+    fetch(`${apiRootUrlDir[process.env.NODE_ENV]}/aws/email/send-ses-email`, {
       method: 'POST',
       body: JSON.stringify(emailBody), // data can be `string` or {object}
       headers: {

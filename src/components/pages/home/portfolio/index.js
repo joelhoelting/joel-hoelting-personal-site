@@ -31,7 +31,7 @@ const Portfolio = () => {
   return (
     <>
       <Divider />
-      <PortfolioContainer name="portfolio" className="container">
+      <PortfolioContainer name="portfolio" className="container portfolio-container">
         <StyledCategoryTitle className="center">Portfolio</StyledCategoryTitle>
         <PortfolioCardContainer>
           {portfolioArray.map((portfolioObj, idx) => (
