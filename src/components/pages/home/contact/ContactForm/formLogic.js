@@ -49,8 +49,6 @@ const FormLogic = () => {
       production: 'https://api.joelhoelting.com'
     };
 
-    console.log(apiRootUrlDir[process.env.NODE_ENV]);
-
     fetch(`${apiRootUrlDir[process.env.NODE_ENV]}/aws/email/send-ses-email`, {
       method: 'POST',
       body: JSON.stringify(emailBody), // data can be `string` or {object}
