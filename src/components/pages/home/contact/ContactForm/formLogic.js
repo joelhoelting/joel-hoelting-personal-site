@@ -73,7 +73,6 @@ const FormLogic = () => {
 
   const handleChange = event => {
     event.persist();
-    console.log(event.target.name, event.target.value);
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
     setInputs(newInputs);
 
