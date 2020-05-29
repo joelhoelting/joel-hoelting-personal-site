@@ -15,6 +15,7 @@ const JoelHoeltingLogo = ({ position }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 84.78 62.91"
       position={position}
+      className="joel-hoelting-logo"
     >
       <title>joel_hoelting_logo</title>
       <path

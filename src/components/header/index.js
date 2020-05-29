@@ -90,6 +90,7 @@ const Header = ({ position }) => {
           spy
           smooth
           duration={600}
+          offset={-40}
           onSetActive={e => {
             if (position === 'fixed') {
               handleAnchorLinkChange(e);

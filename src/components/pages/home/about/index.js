@@ -28,26 +28,20 @@ const ResumeButton = () => {
   );
 };
 
-const AboutContainer = styled(Element)`
-  .about-section {
-    margin: 5em auto;
-  }
-`;
-
 const About = () => {
   return (
     <>
       <Divider />
-      <AboutContainer name="about" className="container">
+      <div name="about" className="container padding-bottom">
         <Bio />
         <Divider />
-        <Tech className="about-section" />
-        <Experience className="about-section" />
-        <Education className="about-section" />
+        <Tech />
+        <Experience />
+        <Education />
         <div className="row row--center">
           <ResumeButton />
         </div>
-      </AboutContainer>
+      </div>
     </>
   );
 };

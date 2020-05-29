@@ -8,7 +8,7 @@ import { StyledCategoryTitle } from '../../_shared/styles';
 const Education = props => {
   return (
     <div {...props}>
-      <StyledCategoryTitle className="center">Education</StyledCategoryTitle>
+      <StyledCategoryTitle>Education</StyledCategoryTitle>
       {educationArray.map((educationObj, idx) => (
         <EducationSection key={`education-section-${idx}`} sectionData={educationObj} />
       ))}

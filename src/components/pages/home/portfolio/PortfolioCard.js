@@ -10,7 +10,7 @@ const PortfolioCardContainer = styled.div`
   border-width: 2px;
   border-style: solid;
   animation: 6s linear infinite ${cycleBorderColors};
-  margin: 1em 0;
+  margin: 0 0 1em;
   padding: 1em;
   ${mediaMin.tabletLandscape`
     margin: 0.6em 0;

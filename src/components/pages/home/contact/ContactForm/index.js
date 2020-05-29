@@ -9,17 +9,11 @@ import MobileInput from './MobileInput';
 import KozakuraDesktopInput from './KozakuraInput';
 import ThreeDots from '~/components/spinners/ThreeDots';
 
-const StyledContactForm = styled.form`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2em 0;
+import { StyledCategoryTitle } from '../../../home/_shared/styles';
 
-  h2 {
-    margin: 2em 0;
-    ${mediaMin.tabletLandscape`
-      margin: 0.6em 0;
-    `}
-  }
+const StyledContactForm = styled.form`
+  max-width: 800px;
+  margin: 0 auto;
 
   textarea {
     width: 100%;
@@ -119,7 +113,7 @@ const ContactForm = () => {
 
   return (
     <StyledContactForm onSubmit={handleSubmit}>
-      <h2 className="center">Contact Me</h2>
+      <StyledCategoryTitle>Contact Me</StyledCategoryTitle>
       <MobileInput
         field="name"
         handleBlur={handleBlur}

@@ -3,9 +3,11 @@ import { mediaMin } from '~/styles/mediaQueries';
 
 const ContainerStyles = createGlobalStyle`
   .container {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
-    padding: 2em 0;
+    ${mediaMin.tabletLandscape`
+      width: 80%;
+    `}
     &.contact-container {
       width: 90%;
     }
@@ -15,9 +17,24 @@ const ContainerStyles = createGlobalStyle`
         width: 80%;
       `}
     }
-    ${mediaMin.tabletLandscape`
-      padding: 5em 0;
-    `}
+    &.padding-bottom {
+      padding-bottom: 1em;
+      ${mediaMin.tabletLandscape`
+        padding-bottom: 4em;
+      `}
+    }
+    &.padding-top {
+      padding-top: 1em;
+      ${mediaMin.tabletLandscape`
+        padding-top: 4em;
+      `}
+    }
+    &.padding {
+      padding: 1em 0;
+      ${mediaMin.tabletLandscape`
+        padding: 4em 0;
+      `}
+    }
   }
 `;
 

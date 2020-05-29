@@ -8,7 +8,7 @@ import { StyledCategoryTitle } from '../../_shared/styles';
 const Experience = props => {
   return (
     <div {...props}>
-      <StyledCategoryTitle className="center">Experience</StyledCategoryTitle>
+      <StyledCategoryTitle>Experience</StyledCategoryTitle>
       {experienceArray.map((experienceObj, idx) => (
         <ExperienceSection key={`experience-section-${idx}`} sectionData={experienceObj} />
       ))}

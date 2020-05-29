@@ -6,11 +6,11 @@ import { Waypoint } from 'react-waypoint';
 import { mediaMax, mediaMin } from '~/styles/mediaQueries';
 
 const AnimatedSectionWrapper = styled.div`
-  margin: 4em 0;
+  margin-bottom: 4em;
   display: flex;
   flex-direction: column;
   ${mediaMin.tabletLandscape`
-    margin: 2em 0;
+    margin-bottom: 3em;
   `}
   .date {
     margin: 1em 0;
@@ -33,9 +33,10 @@ const AnimatedSectionWrapper = styled.div`
       align-items: flex-end;
     `}
 
-    h3.heading {
+    p.heading {
       opacity: ${props => (props.visible ? 1 : 0)};
       transition: opacity 500ms ease;
+      text-transform: uppercase;
       ${mediaMax.tabletLandscape`
         margin-bottom: .2em;
       `}
@@ -59,11 +60,12 @@ const AnimatedSectionWrapper = styled.div`
     max-width: 700px;
     position: relative;
     width: 100%;
-    padding-left: 2em;
+    padding-left: 1em;
     margin-top: 2em;
     ${mediaMin.tabletLandscape`
       margin-top: 0;
       width: 50%;
+      padding-left: 2em;
     `}
     .left-line {
       border-left: 1px solid ${props => props.theme.color};
@@ -117,7 +119,7 @@ const AnimatedSection = ({
         {startDate && <p className="desktop center uppercase date date__start-date">{startDate}</p>}
         <div className="row row--column-mobile">
           <div className="left">
-            <h3 className="heading">{heading}</h3>
+            <p className="heading">{heading}</p>
             {subHeading && <p className="subheading">{subHeading}</p>}
             {startDate && endDate && (
               <p className="mobile mobile-subheading">{`${startDate} - ${endDate}`}</p>

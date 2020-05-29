@@ -8,7 +8,7 @@ import { StyledCategoryTitle } from '../../_shared/styles';
 const Tech = props => {
   return (
     <div {...props}>
-      <StyledCategoryTitle className="center">Tech</StyledCategoryTitle>
+      <StyledCategoryTitle>Tech</StyledCategoryTitle>
       {techItemsArray.map((techObj, idx) => (
         <TechSection key={`tech-section-${idx}`} sectionData={techObj} />
       ))}

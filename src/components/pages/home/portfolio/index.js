@@ -11,7 +11,6 @@ import portfolioArray from '~/data/portfolio';
 import PortfolioCard from './PortfolioCard';
 
 const PortfolioContainer = styled.div`
-  min-height: 100vh;
   h2 {
     margin: 2em 0;
     ${mediaMin.tabletLandscape`
@@ -31,7 +30,7 @@ const Portfolio = () => {
   return (
     <>
       <Divider />
-      <PortfolioContainer name="portfolio" className="container portfolio-container">
+      <PortfolioContainer name="portfolio" className="container portfolio-container padding-bottom">
         <StyledCategoryTitle className="center">Portfolio</StyledCategoryTitle>
         <PortfolioCardContainer>
           {portfolioArray.map((portfolioObj, idx) => (
