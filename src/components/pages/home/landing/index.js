@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 import Particles from 'react-particles-js';
@@ -44,6 +44,18 @@ const LandingContainer = styled(Element)`
 const Landing = () => {
   const context = useContext(Context);
   const { particlesActive } = context;
+
+  const [continueButtonVisible, setContinueButtonVisible] = useState(false);
+
+  useEffect(() => {
+    let buttonVisibleTimer = setTimeout(() => {
+      setContinueButtonVisible(true);
+    }, 1000);
+
+    return () => {
+      clearTimeout(buttonVisibleTimer);
+    };
+  });
 
   return (
     <LandingContainer name="landing">
@@ -105,7 +117,7 @@ const Landing = () => {
         <AnimatedTitle />
         <AnimatedTitleMobile />
         <h2 className="subtitle light">Full Stack Web Developer</h2>
-        <ContinueButton />
+        <ContinueButton visible={continueButtonVisible} />
         <ContinueButtonMobile />
       </div>
     </LandingContainer>
