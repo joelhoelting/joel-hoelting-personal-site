@@ -113,6 +113,7 @@ const Landing = () => {
   React.useEffect(() => {
     setTimeout(() => {
       console.log(particlesRef);
+      // particlesRef.current is undefined here <--------
     });
   }, [particlesRef]);
 
