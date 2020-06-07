@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 import Particles from 'react-particles-js';
@@ -41,9 +41,62 @@ const LandingContainer = styled(Element)`
   }
 `;
 
+const particlesParams = {
+  particles: {
+    number: {
+      value: 60,
+      density: {
+        enable: true,
+        value_area: 1500
+      }
+    },
+    line_linked: {
+      enable: true,
+      opacity: 0.02
+    },
+    move: {
+      speed: 1,
+      attract: {
+        enable: true,
+        rotateX: 3000,
+        rotateY: 3000
+      }
+    },
+    size: {
+      value: 2
+    },
+    opacity: {
+      anim: {
+        enable: true,
+        speed: 1,
+        opacity_min: 0.05
+      }
+    }
+  },
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: 'grab'
+      }
+    },
+    modes: {
+      grab: {
+        distance: 180,
+        line_linked: {
+          opacity: 0.5
+        }
+      }
+    }
+  },
+  retina_detect: true
+};
+
 const Landing = () => {
-  const context = useContext(Context);
-  const { particlesActive } = context;
+  const particlesRef = useRef();
+
+  // const context = useContext(Context);
+  // const { particlesActive } = context;
 
   const [continueButtonVisible, setContinueButtonVisible] = useState(false);
 
@@ -57,62 +110,15 @@ const Landing = () => {
     };
   });
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      console.log(particlesRef);
+    });
+  }, [particlesRef]);
+
   return (
     <LandingContainer name="landing">
-      {particlesActive && (
-        <Particles
-          params={{
-            particles: {
-              number: {
-                value: 60,
-                density: {
-                  enable: true,
-                  value_area: 1500
-                }
-              },
-              line_linked: {
-                enable: true,
-                opacity: 0.02
-              },
-              move: {
-                speed: 1,
-                attract: {
-                  enable: true,
-                  rotateX: 3000,
-                  rotateY: 3000
-                }
-              },
-              size: {
-                value: 2
-              },
-              opacity: {
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0.05
-                }
-              }
-            },
-            interactivity: {
-              events: {
-                onHover: {
-                  enable: true,
-                  mode: 'grab'
-                }
-              },
-              modes: {
-                grab: {
-                  distance: 180,
-                  line_linked: {
-                    opacity: 0.5
-                  }
-                }
-              }
-            },
-            retina_detect: true
-          }}
-        />
-      )}
+      <Particles params={particlesParams} particlesRef={particlesRef} />
       <div className="cta-container">
         <AnimatedTitle />
         <AnimatedTitleMobile />
