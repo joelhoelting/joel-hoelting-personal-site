@@ -4,12 +4,12 @@ import { mediaMin, mediaMax } from './mediaQueries';
 const ResponsiveStyles = createGlobalStyle`
   .mobile {
     ${mediaMin.tabletLandscape`
-      display: none;
+      display: none !important;
     `}
   }
   .desktop {
     ${mediaMax.tabletLandscape`
-      display: none;
+      display: none !important;
     `}
   }
 `;
