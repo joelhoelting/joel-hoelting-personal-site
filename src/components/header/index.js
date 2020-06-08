@@ -73,7 +73,7 @@ const Header = ({ position }) => {
   const context = useContext(Context);
   const { particlesActive, setParticlesActive } = context;
 
-  const [activeElement, setActiveElement] = useState(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
 
   const handleAnchorLinkChange = route => {
     // Disable particles when scrolling below landing section
@@ -85,7 +85,7 @@ const Header = ({ position }) => {
       setParticlesActive(true);
     }
 
-    setActiveElement(route);
+    route === 'landing' ? setHeaderVisible(false) : setHeaderVisible(true);
   };
 
   const generateLinks = () => {
@@ -118,16 +118,14 @@ const Header = ({ position }) => {
   };
 
   return (
-    <StyledHeader
-      position={position}
-      visible={position === 'absolute' ? true : activeElement !== 'landing'}
-    >
+    <StyledHeader position={position} visible={position === 'absolute' ? true : headerVisible}>
       <Link
         href={`#landing`}
         to="landing"
         spy
         smooth
         duration={600}
+        offset={-40}
         onSetActive={e => handleAnchorLinkChange(e)}
         className="landing-link"
       >

@@ -58,7 +58,7 @@ const DarkModeButton = () => {
           <line x1="25.76" y1="24.74" x2="30.01" y2="28.98" />
           <line x1="8.62" y1="24.74" x2="4.38" y2="28.98" />
           <line x1="30.01" y1="5.14" x2="25.76" y2="9.39" />
-          <circle data-name="Sun" class="cls-2" cx="17" cy="17" r="10" />
+          <circle cx="17" cy="17" r="10" />
         </g>
         <g id="moon">
           <path
