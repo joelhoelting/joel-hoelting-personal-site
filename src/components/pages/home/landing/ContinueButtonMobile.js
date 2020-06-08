@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
 
@@ -12,22 +12,10 @@ const ContinueButtonLink = styled(Link)`
   }
 `;
 
-const ContinueButtonMobile = () => {
-  const [buttonVisible, setbuttonVisible] = useState(false);
-
-  useEffect(() => {
-    let buttonVisibleTimer = setTimeout(() => {
-      setbuttonVisible(true);
-    }, 2000);
-
-    return () => {
-      clearTimeout(buttonVisibleTimer);
-    };
-  });
-
+const ContinueButtonMobile = ({ visible }) => {
   return (
     <ContinueButtonLink
-      className={buttonVisible && 'visible'}
+      className={visible && 'visible'}
       duration={600}
       href="#about"
       to="about"

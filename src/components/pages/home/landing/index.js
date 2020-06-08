@@ -97,7 +97,7 @@ const Landing = () => {
           Full Stack Web Developer
         </h2>
         <ContinueButton visible={continueButtonVisible} />
-        <ContinueButtonMobile />
+        <ContinueButtonMobile visible={continueButtonVisible} />
       </div>
     </LandingContainer>
   );

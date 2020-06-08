@@ -12,7 +12,6 @@ const StyledSVG = styled.svg`
   path {
     stroke: ${props => props.theme.color};
     fill: ${props => props.theme.color};
-    animation: 4s linear forwards ${drawLine};
     fill-opacity: 0;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
