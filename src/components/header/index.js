@@ -85,7 +85,7 @@ const Header = ({ position }) => {
       setParticlesActive(true);
     }
 
-    setHeaderVisible(route === 'landing');
+    setHeaderVisible(route !== 'landing');
   };
 
   const generateLinks = () => {
