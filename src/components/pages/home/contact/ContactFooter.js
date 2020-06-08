@@ -39,12 +39,12 @@ const StyledContactFooter = styled.div`
       align-items: center;
       justify-content: center;
       background: ${props => props.theme.socialLinkBackground};
-      border-radius: 10px;
+      border-radius: 50%;
       margin: 0 1em;
       ${mediaMin.tabletLandscape`
-        height: 60px;
-        width: 60px;
-        margin: 0 2em;
+        height: 80px;
+        width: 80px;
+        margin: 0 1em;
         opacity: .8;
         &:hover {
           opacity: 1;
@@ -74,16 +74,11 @@ const ContactFooter = () => {
         >
           <GithubIcon />
         </a>
-        <a
-          href="https://github.com/joelhoelting"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-link"
-        >
+        <a href="mailto:joel@joelhoelting.com" className="social-link">
           <MailIcon />
         </a>
         <a
-          href="https://github.com/joelhoelting"
+          href="https://www.linkedin.com/in/joel-hoelting"
           target="_blank"
           rel="noopener noreferrer"
           className="social-link"
