@@ -10,16 +10,23 @@ const StyledSVG = styled.svg`
   path {
     stroke: ${props => props.theme.color};
     fill: ${props => props.theme.color};
-    animation: 4s linear forwards ${drawLine};
     fill-opacity: 0;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
   }
+  &.visible path {
+    animation: 6s linear forwards ${drawLine};
+  }
 `;
 
-const AnimatedTitle = () => {
+const AnimatedTitle = ({ visible }) => {
   return (
-    <StyledSVG className="desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1356.8 181.5">
+    <StyledSVG
+      visible={visible}
+      className={`desktop ${visible && 'visible'}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1356.8 181.5"
+    >
       <title>Joel Hoelting</title>
       <path
         id="J"

@@ -3,7 +3,7 @@ const experienceArray = [
     heading: 'DBOX',
     subHeading: 'Full Stack Web Developer',
     endDate: 'PRESENT',
-    startDate: '2018',
+    startDate: 'April 2018',
     listDescription:
       'DBOX is an international creative communications agency that develops innovative, strategic marketing campaigns in the sectors of luxury residential, hospitality, commercial, and cultural property.',
     listItems: [
@@ -18,7 +18,7 @@ const experienceArray = [
     heading: 'Code Nation',
     subHeading: 'Coding Instructor',
     endDate: 'PRESENT',
-    startDate: '2017',
+    startDate: 'September 2017',
     listDescription:
       'Code Nation equips students in under-resourced high schools with the skills, experiences, and connections that together create access to careers in tech.',
     listItems: [

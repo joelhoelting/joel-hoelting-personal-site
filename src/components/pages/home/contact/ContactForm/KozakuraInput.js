@@ -49,7 +49,7 @@ const KozakuraWrapper = styled.div`
 
     &:focus + label {
       transform: translate3d(12px, -12px, 0);
-      color: #fff;
+      color: ${props => props.theme.kozuraInputFocusColor};
     }
 
     &:focus ~ svg {

@@ -8,6 +8,7 @@ import routes from '~/data/routes';
 import { mediaMin } from '~/styles/mediaQueries';
 
 import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
+import DarkModeButton from '~/components/buttons/DarkModeButton';
 
 import ResumeLink from '~/components/links/ResumeLink';
 
@@ -18,10 +19,11 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
   padding: 0 1em;
   background: ${props =>
     props.position === 'absolute' ? 'transparent' : props.theme.headerBackground};
+  box-shadow: ${props => (props.position === 'absolute' ? 'none' : `3px 3px 5px rgba(0,0,0,.2)`)};
   transition: transform 300ms ease, opacity 300ms ease;
   transform: ${props => (props.visible ? 'translateX(0%)' : 'translateY(-100%)')};
   opacity: ${props => (props.visible ? 1 : 0)};
@@ -35,6 +37,9 @@ const StyledHeader = styled.header`
         opacity: 1;
       `}
     }
+    &.active {
+      opacity: 1;
+    }
   }
 
   nav {
@@ -43,6 +48,8 @@ const StyledHeader = styled.header`
       li {
         margin-left: 1em;
         text-transform: uppercase;
+        display: flex;
+        align-items: center;
         a {
           letter-spacing: 2px;
           transition: opacity 300ms ease;
@@ -66,7 +73,7 @@ const Header = ({ position }) => {
   const context = useContext(Context);
   const { particlesActive, setParticlesActive } = context;
 
-  const [activeElement, setActiveElement] = useState('landing');
+  const [activeElement, setActiveElement] = useState(null);
 
   const handleAnchorLinkChange = route => {
     // Disable particles when scrolling below landing section
@@ -91,11 +98,7 @@ const Header = ({ position }) => {
           smooth
           duration={600}
           offset={-40}
-          onSetActive={e => {
-            if (position === 'fixed') {
-              handleAnchorLinkChange(e);
-            }
-          }}
+          onSetActive={e => handleAnchorLinkChange(e)}
           className="bold"
         >
           {route}
@@ -104,10 +107,12 @@ const Header = ({ position }) => {
     ));
 
     links.push(
-      <li key={`resume-link`} className="desktop">
+      <li key="resume-link" className="desktop">
         <ResumeLink className="bold">Resume</ResumeLink>
       </li>
     );
+
+    links.push(<DarkModeButton key="dark-mode-button" />);
 
     return links;
   };
@@ -123,16 +128,11 @@ const Header = ({ position }) => {
         spy
         smooth
         duration={600}
-        onSetActive={e => {
-          if (position === 'fixed') {
-            handleAnchorLinkChange(e);
-          }
-        }}
+        onSetActive={e => handleAnchorLinkChange(e)}
         className="landing-link"
       >
         <JoelHoeltingLogo position={position} />
       </Link>
-      {/* <button onClick={toggleDarkMode}>Toggle Dark Mode</button> */}
       <nav>
         <ul>{generateLinks()}</ul>
       </nav>

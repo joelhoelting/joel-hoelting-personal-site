@@ -17,11 +17,18 @@ const StyledSVG = styled.svg`
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
   }
+  &.visible path {
+    animation: 4s linear forwards ${drawLine};
+  }
 `;
 
-const AnimatedMobileTitle = () => {
+const AnimatedMobileTitle = ({ visible }) => {
   return (
-    <StyledSVG className="mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1288.2 622.7">
+    <StyledSVG
+      className={`mobile ${visible && 'visible'}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1288.2 622.7"
+    >
       <title>Joel Hoelting</title>
       <path
         id="J"

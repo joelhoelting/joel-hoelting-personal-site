@@ -58,7 +58,7 @@ const StyledContactForm = styled.form`
     height: 80px;
     border: none;
     background: ${props => props.theme.formInputBackground};
-    color: ${props => props.theme.color};
+    color: ${props => props.theme.formSubmitBtnColor};
     font-size: 16px;
     cursor: pointer;
     transition: all 300ms ease;

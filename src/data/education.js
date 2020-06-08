@@ -2,8 +2,8 @@ const educationArray = [
   {
     heading: 'Flatiron School',
     subHeading: 'New York, NY',
-    endDate: '2017',
-    startDate: '2018',
+    endDate: '2018',
+    startDate: '2017',
     listDescription: '1000+ Hours Software Development Bootcamp with 6% Acceptance Rate.'
   },
   {

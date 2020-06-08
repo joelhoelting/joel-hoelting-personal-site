@@ -38,7 +38,7 @@ const StyledContactFooter = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
+      background: ${props => props.theme.socialLinkBackground};
       border-radius: 10px;
       margin: 0 1em;
       ${mediaMin.tabletLandscape`

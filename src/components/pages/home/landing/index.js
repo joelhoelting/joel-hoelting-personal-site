@@ -5,7 +5,7 @@ import Particles from 'react-particles-js';
 
 import Context from '~/context';
 
-import { mediaMax } from '~/styles/mediaQueries';
+import { darkModeParticleParams, lightModeParticleParams } from './particles/parameters';
 import AnimatedTitle from './AnimatedTitle';
 import AnimatedTitleMobile from './AnimatedTitleMobile';
 import ContinueButton from './ContinueButton';
@@ -31,99 +31,71 @@ const LandingContainer = styled(Element)`
     justify-content: center;
     flex-direction: column;
     width: 60%;
+    background: ${props => props.theme.landingCTABackground};
     h2.subtitle {
       margin: 0.5em 0;
       font-size: 1em;
-      ${mediaMax.tabletLandscape`
-        display: none;
-      `}
+      opacity: 0;
+      transition: opacity 300ms ease;
+      &.visible {
+        opacity: 1;
+      }
     }
   }
 `;
 
-const particlesParams = {
-  particles: {
-    number: {
-      value: 60,
-      density: {
-        enable: true,
-        value_area: 1500
-      }
-    },
-    line_linked: {
-      enable: true,
-      opacity: 0.02
-    },
-    move: {
-      speed: 1,
-      attract: {
-        enable: true,
-        rotateX: 3000,
-        rotateY: 3000
-      }
-    },
-    size: {
-      value: 2
-    },
-    opacity: {
-      anim: {
-        enable: true,
-        speed: 1,
-        opacity_min: 0.05
-      }
-    }
-  },
-  interactivity: {
-    events: {
-      onHover: {
-        enable: true,
-        mode: 'grab'
-      }
-    },
-    modes: {
-      grab: {
-        distance: 180,
-        line_linked: {
-          opacity: 0.5
-        }
-      }
-    }
-  },
-  retina_detect: true
-};
-
 const Landing = () => {
   const particlesRef = useRef();
 
-  // const context = useContext(Context);
-  // const { particlesActive } = context;
+  const context = useContext(Context);
+  const { darkModeActive, particlesActive } = context;
+
+  const particleParams = darkModeActive ? darkModeParticleParams : lightModeParticleParams;
 
   const [continueButtonVisible, setContinueButtonVisible] = useState(false);
+  const [animatedTitleVisible, setAnimatedTitleVisible] = useState(false);
 
   useEffect(() => {
+    let animatedTitleVisibleTimer = setTimeout(() => {
+      setAnimatedTitleVisible(true);
+    }, 1000);
+
     let buttonVisibleTimer = setTimeout(() => {
       setContinueButtonVisible(true);
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearTimeout(buttonVisibleTimer);
+      clearTimeout(animatedTitleVisibleTimer);
     };
   });
 
   React.useEffect(() => {
-    setTimeout(() => {
-      console.log(particlesRef);
-      // particlesRef.current is undefined here <--------
-    });
-  }, [particlesRef]);
+    const current = particlesRef.current;
+
+    if (particlesActive) {
+      setTimeout(() => {
+        current.play();
+      });
+    } else {
+      setTimeout(() => {
+        current.pause();
+      });
+    }
+  }, [particlesRef, particlesActive]);
 
   return (
     <LandingContainer name="landing">
-      <Particles params={particlesParams} particlesRef={particlesRef} />
-      <div className="cta-container">
-        <AnimatedTitle />
-        <AnimatedTitleMobile />
-        <h2 className="subtitle light">Full Stack Web Developer</h2>
+      <Particles params={particleParams} particlesRef={particlesRef} />
+      <div
+        className="cta-container"
+        style={{ transition: !darkModeActive ? '300ms ease background 300ms' : 'none' }}
+      >
+        <AnimatedTitle visible={animatedTitleVisible} />
+        <AnimatedTitleMobile visible={animatedTitleVisible} />
+        <h2 className={`subtitle light desktop ${continueButtonVisible && 'visible'}`}>
+          Full Stack Web Developer
+        </h2>
         <ContinueButton visible={continueButtonVisible} />
         <ContinueButtonMobile />
       </div>
