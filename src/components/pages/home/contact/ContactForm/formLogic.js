@@ -3,11 +3,13 @@ import { useState } from 'react';
 import validateForm from './validateForm';
 
 const FormLogic = () => {
-  const [inputs, setInputs] = useState({
+  const defaultFormState = {
     name: '',
     email: '',
     textarea: ''
-  });
+  };
+
+  const [inputs, setInputs] = useState(defaultFormState);
 
   const [errors, setErrors] = useState({
     name: false,
@@ -18,6 +20,14 @@ const FormLogic = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submissionAttempted, setSubmissionAttempted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const resetForm = () => {
+    setInputs(defaultFormState);
+
+    if (submitted) {
+      setSubmitted(false);
+    }
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -38,10 +48,14 @@ const FormLogic = () => {
     }
 
     const emailBody = {
-      to: 'joelhoelting@protonmail.com',
-      subject: `joelhoelting.com: ${name}`,
+      to: 'joel@joelhoelting.com',
+      subject: `New message from joelhoelting.com: ${name}`,
       from: 'joelhoelting.com',
-      message: `Joel, you have a new email from: ${email}\n\n${textarea}`
+      message: `
+        Name: ${name}\n
+        Email: ${email}\n
+        Message: ${textarea}
+      `
     };
 
     const apiRootUrlDir = {
@@ -87,7 +101,8 @@ const FormLogic = () => {
     inputs,
     errors,
     submitted,
-    submitting
+    submitting,
+    resetForm
   };
 };
 

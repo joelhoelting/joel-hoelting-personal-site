@@ -8,9 +8,8 @@ import routes from '~/data/routes';
 import { mediaMin } from '~/styles/mediaQueries';
 
 import JoelHoeltingLogo from '~/components/images/logos/JoelHoeltingLogo';
-import DarkModeButton from '~/components/buttons/DarkModeButton';
-
 import ResumeLink from '~/components/links/ResumeLink';
+import DarkModeButton from '~/components/buttons/DarkModeButton';
 
 const StyledHeader = styled.header`
   position: ${props => props.position};

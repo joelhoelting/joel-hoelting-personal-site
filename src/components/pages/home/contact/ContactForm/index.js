@@ -9,11 +9,18 @@ import MobileInput from './MobileInput';
 import KozakuraDesktopInput from './KozakuraInput';
 import ThreeDots from '~/components/spinners/ThreeDots';
 
-import { StyledCategoryTitle } from '../../../home/_shared/styles';
+import { StyledCategoryTitle } from '~/components/pages/home/_shared/styles';
+
+const FormContainer = styled.div`
+  position: relative;
+`;
 
 const StyledContactForm = styled.form`
   max-width: 800px;
   margin: 0 auto;
+  opacity: ${props => (props.submitted ? 0 : 1)};
+  visibility: ${props => (props.submitted ? 'hidden' : 'visible')};
+  transition: opacity 300ms ease, visibility 300ms ease;
 
   textarea {
     width: 100%;
@@ -92,6 +99,27 @@ const StyledContactForm = styled.form`
   }
 `;
 
+const ThankYouContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  visibility: ${props => (props.submitted ? 'visible' : 'hidden')};
+  opacity: ${props => (props.submitted ? 1 : 0)};
+  transition: opacity 300ms ease, visibility 300ms ease;
+  button {
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+`;
+
 const ErrorNotification = styled.p`
   color: red;
   text-align: center;
@@ -106,56 +134,65 @@ const ContactForm = () => {
     handleBlur,
     errors,
     submitted,
-    submitting
+    submitting,
+    resetForm
   } = FormLogic();
 
   const containsErrors = Object.values(errors).includes(true);
 
   return (
-    <StyledContactForm onSubmit={handleSubmit}>
+    <FormContainer>
       <StyledCategoryTitle>Contact Me</StyledCategoryTitle>
-      <MobileInput
-        field="name"
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-        inputs={inputs}
-        errors={errors}
-      />
-      <MobileInput
-        field="email"
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-        inputs={inputs}
-        errors={errors}
-      />
-      <KozakuraDesktopInput
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-        inputs={inputs}
-        errors={errors}
-        field="name"
-      />
-      <KozakuraDesktopInput
-        handleBlur={handleBlur}
-        handleChange={handleChange}
-        inputs={inputs}
-        errors={errors}
-        field="email"
-      />
-      <textarea
-        name="textarea"
-        onBlur={handleBlur}
-        onChange={handleChange}
-        value={inputs.textarea}
-        className={errors.textarea ? 'invalid' : undefined}
-        placeholder="Send me an email ..."
-      />
-      <button type="submit" value="Submit" disabled={containsErrors || submitting}>
-        {!submitting && <span>Send Email</span>}
-        {submitting && <ThreeDots />}
-      </button>
-      <ErrorNotification containsErrors={containsErrors}>invalid fields present</ErrorNotification>
-    </StyledContactForm>
+      <StyledContactForm onSubmit={handleSubmit} submitted={submitted}>
+        <MobileInput
+          field="name"
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          inputs={inputs}
+          errors={errors}
+        />
+        <MobileInput
+          field="email"
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          inputs={inputs}
+          errors={errors}
+        />
+        <KozakuraDesktopInput
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          inputs={inputs}
+          errors={errors}
+          field="name"
+        />
+        <KozakuraDesktopInput
+          handleBlur={handleBlur}
+          handleChange={handleChange}
+          inputs={inputs}
+          errors={errors}
+          field="email"
+        />
+        <textarea
+          name="textarea"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={inputs.textarea}
+          className={errors.textarea ? 'invalid' : undefined}
+          placeholder="Send me an email ..."
+        />
+        <button type="submit" value="Submit" disabled={containsErrors || submitting}>
+          {!submitting && <span>Send Email</span>}
+          {submitting && <ThreeDots />}
+        </button>
+        <ErrorNotification containsErrors={containsErrors}>
+          invalid fields present
+        </ErrorNotification>
+      </StyledContactForm>
+      <ThankYouContainer submitted={submitted}>
+        <p>Thank you for reaching out to me!</p>
+        <button onClick={resetForm}>Send me another email</button>
+      </ThankYouContainer>
+    </FormContainer>
   );
 };
 

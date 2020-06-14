@@ -6,14 +6,14 @@ import Context from '~/context';
 
 // export to createContext() -- '~/context'
 export const defaultState = {
-  darkModeActive: true,
+  darkModeActive: false,
   toggleDarkMode: () => {},
   particlesActive: true,
   setParticlesActive: () => {}
 };
 
 const ContextProvider = props => {
-  const [darkModeActive, setdarkModeActive] = useState(true);
+  const [darkModeActive, setdarkModeActive] = useState(false);
   const [particlesActive, setParticlesActive] = useState(true);
 
   const toggleDarkMode = () => {

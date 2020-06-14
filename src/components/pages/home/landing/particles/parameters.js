@@ -3,7 +3,7 @@ import variables from '~/styles/variables';
 export const darkModeParticleParams = {
   particles: {
     number: {
-      value: 60,
+      value: 80,
       density: {
         enable: true,
         value_area: 1500
@@ -53,23 +53,27 @@ export const darkModeParticleParams = {
 
 export const lightModeParticleParams = {
   particles: {
-    color: {
-      value: variables.colors.darkBlue
-    },
     number: {
-      value: 40,
+      value: 80,
       density: {
         enable: true,
         value_area: 1500
       }
     },
+    color: {
+      value: variables.colors.darkBlue
+    },
     line_linked: {
       enable: true,
-      opacity: 0.02
+      opacity: 1
     },
     move: {
-      direction: 'right',
-      speed: 0.05
+      speed: 1,
+      attract: {
+        enable: true,
+        rotateX: 3000,
+        rotateY: 3000
+      }
     },
     size: {
       value: 2
@@ -79,6 +83,27 @@ export const lightModeParticleParams = {
         enable: true,
         speed: 1,
         opacity_min: 0.05
+      }
+    }
+  },
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: 'grab'
+      }
+    },
+    modes: {
+      grab: {
+        distance: 180,
+        line_linked: {
+          opacity: 0.5
+        },
+        links: {
+          color: {
+            value: '#000'
+          }
+        }
       }
     }
   },

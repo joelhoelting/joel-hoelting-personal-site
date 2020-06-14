@@ -8,7 +8,7 @@ const ThreeDotsWrapper = styled.div`
     width: 14px;
     height: 14px;
     margin: 0 2px;
-    background-color: ${props => props.theme.color};
+    background-color: #fff;
 
     border-radius: 100%;
     display: inline-block;
