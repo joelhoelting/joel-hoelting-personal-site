@@ -55,18 +55,22 @@ const PortfolioCardContainer = styled.div`
 `;
 
 const PortfolioCard = ({ cardData }) => {
-  const { title, description, stack, github, website } = cardData;
+  const { title, description, stack, repositories, website } = cardData;
   return (
     <PortfolioCardContainer>
       <p className="bold title">{title}</p>
       <p className="description">{description}</p>
       <p className="stack italic">{stack}</p>
-      <a className="source-button" href={github} target="_blank" rel="noopener noreferrer">
-        Github
-      </a>
-      <a className="source-button" href={website} target="_blank" rel="noopener noreferrer">
-        Website
-      </a>
+      {repositories.map(url => (
+        <a className="source-button" href={url} target="_blank" rel="noopener noreferrer">
+          Github
+        </a>
+      ))}
+      {website && (
+        <a className="source-button" href={website} target="_blank" rel="noopener noreferrer">
+          Website
+        </a>
+      )}
     </PortfolioCardContainer>
   );
 };
