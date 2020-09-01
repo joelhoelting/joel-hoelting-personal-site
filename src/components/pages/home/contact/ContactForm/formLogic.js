@@ -6,7 +6,8 @@ const FormLogic = () => {
   const defaultFormState = {
     name: '',
     email: '',
-    textarea: ''
+    textarea: '',
+    address: ''
   };
 
   const [inputs, setInputs] = useState(defaultFormState);
@@ -32,8 +33,15 @@ const FormLogic = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
+    // Encapsulates all expected behavior when form submits successfully
+    const submissionSuccessActions = () => {
+      setSubmissionAttempted(false);
+      setSubmitting(false);
+      setSubmitted(true);
+    };
+
     setSubmitting(true);
-    const { name, email, textarea } = inputs;
+    const { name, email, textarea, address } = inputs;
 
     const formErrors = validateForm(inputs);
     setErrors(formErrors);
@@ -44,6 +52,14 @@ const FormLogic = () => {
       if (!submissionAttempted) {
         setSubmissionAttempted(true);
       }
+      return;
+    }
+
+    // My little honey pot
+    if (address) {
+      setTimeout(() => {
+        submissionSuccessActions();
+      }, 1000);
       return;
     }
 
@@ -72,8 +88,7 @@ const FormLogic = () => {
     })
       .then(res => {
         setTimeout(() => {
-          setSubmitting(false);
-          setSubmitted(true);
+          submissionSuccessActions();
         }, 1000);
       })
       // eslint-disable-next-line

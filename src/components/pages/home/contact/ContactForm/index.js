@@ -57,6 +57,18 @@ const StyledContactForm = styled.form`
     }
   }
 
+  ${'' /* Honeypot */}
+  input[name='address'] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+  }
+  ${'' /* Honeypot */}
+
   button {
     width: 100%;
     padding: 0;
@@ -131,7 +143,6 @@ const ContactForm = () => {
     inputs,
     handleChange,
     handleSubmit,
-    handleBlur,
     errors,
     submitted,
     submitting,
@@ -144,42 +155,37 @@ const ContactForm = () => {
     <FormContainer>
       <StyledCategoryTitle>Contact Me</StyledCategoryTitle>
       <StyledContactForm onSubmit={handleSubmit} submitted={submitted}>
-        <MobileInput
+        <MobileInput field="name" handleChange={handleChange} inputs={inputs} errors={errors} />
+        <MobileInput field="email" handleChange={handleChange} inputs={inputs} errors={errors} />
+        <KozakuraDesktopInput
           field="name"
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          inputs={inputs}
-          errors={errors}
-        />
-        <MobileInput
-          field="email"
-          handleBlur={handleBlur}
           handleChange={handleChange}
           inputs={inputs}
           errors={errors}
         />
         <KozakuraDesktopInput
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          inputs={inputs}
-          errors={errors}
-          field="name"
-        />
-        <KozakuraDesktopInput
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          inputs={inputs}
-          errors={errors}
           field="email"
+          handleChange={handleChange}
+          inputs={inputs}
+          errors={errors}
         />
         <textarea
           name="textarea"
-          onBlur={handleBlur}
           onChange={handleChange}
           value={inputs.textarea}
           className={errors.textarea ? 'invalid' : undefined}
           placeholder="Send me an email ..."
         />
+
+        {/* HoneyPot */}
+        <input
+          name="address"
+          onChange={handleChange}
+          value={inputs.address}
+          placeholder="please provide your address"
+        />
+        {/* HoneyPot */}
+
         <button type="submit" value="Submit" disabled={containsErrors || submitting}>
           {!submitting && <span>Send Email</span>}
           {submitting && <ThreeDots />}

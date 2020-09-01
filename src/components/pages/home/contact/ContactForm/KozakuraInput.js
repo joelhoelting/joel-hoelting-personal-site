@@ -22,7 +22,10 @@ const KozakuraWrapper = styled.div`
       transform: translate3d(12px, -12px, 0);
     }
     svg {
-      fill: ${props => props.theme.formInputBackground};
+      fill: ${props =>
+        props.hasError
+          ? props.theme.formInputBackgroundInvalid
+          : props.theme.formInputBackgroundFocus};
       transform: translate3d(-66.6%, 0, 0);
     }
   }
@@ -99,20 +102,13 @@ const KozakuraWrapper = styled.div`
   }
 `;
 
-const KozakuraInput = ({ field, handleBlur, handleChange, inputs, errors }) => {
+const KozakuraInput = ({ field, handleChange, inputs, errors }) => {
   const value = inputs[field];
   const error = errors[field];
 
   return (
     <KozakuraWrapper className={`desktop ${value.length > 0 && 'filled'}`} hasError={error}>
-      <input
-        type="text"
-        id={field}
-        name={field}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        value={value}
-      />
+      <input type="text" id={field} name={field} onChange={handleChange} value={value} />
       <label htmlFor={field}>{capitalizeFirstLetter(field)}</label>
       <svg width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
         <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z" />
