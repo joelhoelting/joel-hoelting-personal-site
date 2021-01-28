@@ -5,6 +5,7 @@ import {
   Javascript,
   NodeDotJs,
   Graphql,
+  Docker,
   Amazonaws,
   Git,
   Github,
@@ -58,6 +59,7 @@ const techItemsArray = [
       { icon: <Gatsby />, name: 'Gatsby JS' },
       { icon: <Graphql />, name: 'GraphQL' },
       { icon: <Postgresql />, name: 'PostgresQL' },
+      { icon: <Docker />, name: 'Docker' },
       { icon: <Gulp />, name: 'Gulp' },
       {
         icon: <Linux />,

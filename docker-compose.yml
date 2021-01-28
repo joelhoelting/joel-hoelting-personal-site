@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  base:
+    image: node:14.15.4
+    volumes:
+      - nodemodules:/usr/src/app/node_modules
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+  install:
+    extends:
+      service: base
+    command: npm install
+  dev:
+    extends:
+      service: base
+    command: npm start
+    ports:
+      - 8000:8000
+  build:
+    extends:
+      service: base
+    command: npm run build
+volumes:
+  nodemodules:
+    external: true
+
