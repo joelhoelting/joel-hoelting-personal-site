@@ -12,7 +12,7 @@ const portfolioArray = [
   {
     title: 'rowdtla.com',
     description:
-      'Static site for ROWDTLA, Retail outlets, offices & restaurants built w/ Gatsby.js',
+      'SPA for ROWDTLA, built w/ Gatsby.js and contentful',
     stack: 'Contentful, Gatsby.js, GraphQL',
     repositories: ['https://github.com/joelhoelting/row-dtla-full-site'],
     website: 'https://rowdtla.com'
@@ -20,7 +20,7 @@ const portfolioArray = [
   {
     title: 'hudsonsquareproperties.com',
     description:
-      'Server-side site built with Next.js for Hudson Square Properties, NYC real-estate',
+      'Server-side SPA built with Next.js for Hudson Square Properties, NYC real-estate',
     stack: 'Wordpress (Headless CMS), Next.js',
     repositories: ['https://github.com/joelhoelting/hsp-full-site-next'],
     website: 'https://hudsonsquareproperties.com'
@@ -28,7 +28,7 @@ const portfolioArray = [
   {
     title: '25parkrow.com',
     description:
-      'Static-site for 25 Park Row, luxury condominiums that interfaces with Express API',
+      'SPA for 25 Park Row, interfaces w/ Express and Strapi API',
     stack: 'Express.js, Strapi, React.js',
     repositories: ['https://github.com/joelhoelting/25-park-row-full-site'],
     website: 'https://25parkrow.com'
