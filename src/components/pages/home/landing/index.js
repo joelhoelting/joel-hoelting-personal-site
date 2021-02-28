@@ -94,7 +94,7 @@ const Landing = () => {
         <AnimatedTitle visible={animatedTitleVisible} />
         <AnimatedTitleMobile visible={animatedTitleVisible} />
         <h2 className={`subtitle light desktop ${continueButtonVisible && 'visible'}`}>
-          Full Stack Web Developer
+          Full Stack Software Engineer
         </h2>
         <ContinueButton visible={continueButtonVisible} />
         <ContinueButtonMobile visible={continueButtonVisible} />
