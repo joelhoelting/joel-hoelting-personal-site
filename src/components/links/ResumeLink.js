@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ResumePDF from '~/assets/pdf/joel_hoelting_resume_2020.pdf';
+import ResumePDF from '~/assets/pdf/joel_hoelting_resume.pdf';
 
 const ResumeLink = props => {
   return (
