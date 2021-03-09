@@ -7,10 +7,10 @@ const experienceArray = [
     listDescription:
       'DBOX is an international creative communications agency that develops innovative, strategic marketing campaigns in the sectors of luxury residential, hospitality, commercial, and cultural property.',
     listItems: [
-      'Play a pivotal role in the full web design and engineering lifecycle by providing design input, executing development, and performing the full-breadth of systems operations.',
-      'Develop and maintain Node APIs that interface with AWS in order to provide critical services to clients.',
-      'Employed AWS for static and server-side hosting using Route53, S3, EC2, CloudFront and CloudFormation.',
-      'Overhauled previous development workflow by leveraging continuous integration and deployment with AWS CodePipeline and TravisCI.',
+      'Develop sophisticated UI’s with React that integrate with internal API’s and external services like Contentful and Strapi.js',
+      'Rebuilt legacy node API from the ground up while revamping its documentation for future developers.',
+      'Eliminated unnecessary resources and restructured infrastructure on AWS, reducing monthly costs by 30%.',
+      'Automated development operations with AWS Cloudformation and Codepipeline, freeing up hours previously spent on  deployment',
       'Introduced a collaborative code review into the hiring process to better identify strengths and weaknesses of candidates.'
     ]
   },
