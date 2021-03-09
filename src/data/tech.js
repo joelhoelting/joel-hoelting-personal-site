@@ -13,17 +13,17 @@ import {
   Rails,
   Gulp,
   Gatsby,
-  Invision,
   Linux,
+  Gnubash,
   NextDotJs,
   Postgresql,
   Python,
+  Figma,
   Adobeillustrator,
   Postman,
   Redux,
   Sketch,
-  VueDotJs,
-  Wordpress
+  VueDotJs
 } from '@icons-pack/react-simple-icons';
 
 const techItemsArray = [
@@ -65,14 +65,17 @@ const techItemsArray = [
         icon: <Linux />,
         name: 'Linux'
       },
+      {
+        icon: <Gnubash />,
+        name: 'Bash'
+      },
       { icon: <Postman />, name: 'Postman' },
-      { icon: <Wordpress />, name: 'Wordpress' },
+      { icon: <Figma />, name: 'Figma' },
       { icon: <Sketch />, name: 'Sketch' },
       {
         icon: <Adobeillustrator />,
         name: 'Adobe Illustrator'
-      },
-      { icon: <Invision />, name: 'Invision' }
+      }
     ]
   }
 ];
