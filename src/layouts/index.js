@@ -8,13 +8,13 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import '~/styles/fonts/fonts.css';
 
 import Context from '~/context';
 
 import { darkTheme, lightTheme } from '~/styles/theme';
 import {
   ContainerStyles,
-  FontStyles,
   GlobalStyles,
   LayoutStyles,
   TypographyStyles,
@@ -27,7 +27,7 @@ const GlobalCSS = () => {
   return (
     <>
       <ContainerStyles />
-      <FontStyles />
+      {/* <FontStyles /> */}
       <GlobalStyles />
       <LayoutStyles />
       <TypographyStyles />
