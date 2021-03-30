@@ -11,9 +11,8 @@ const portfolioArray = [
   },
   {
     title: 'Repo Destroyer',
-    description:
-      'Repo Destroyer is a lightweight tool that allows you to quickly delete large numbers of GitHub repositories',
-    stack: 'Python',
+    description: 'CLI app to quickly delete GitHub repositories (w/ safeguards)',
+    stack: 'Python, Click',
     repositories: ['https://github.com/joelhoelting/repo-destroyer']
   },
   {
