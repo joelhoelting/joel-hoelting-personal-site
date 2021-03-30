@@ -6,6 +6,9 @@ import Particles from 'react-particles-js';
 import Context from '~/context';
 
 import { darkModeParticleParams, lightModeParticleParams } from './particles/parameters';
+
+import SocialLinks from '../_shared/SocialLinks';
+
 import AnimatedTitle from './AnimatedTitle';
 import AnimatedTitleMobile from './AnimatedTitleMobile';
 import ContinueButton from './ContinueButton';
@@ -41,6 +44,13 @@ const LandingContainer = styled(Element)`
         opacity: 1;
       }
     }
+  }
+  .social-links {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2em;
   }
 `;
 
@@ -99,6 +109,7 @@ const Landing = () => {
         <ContinueButton visible={continueButtonVisible} />
         <ContinueButtonMobile visible={continueButtonVisible} />
       </div>
+      <SocialLinks styles={{ position: 'absolute', margin: 0 }} />
     </LandingContainer>
   );
 };

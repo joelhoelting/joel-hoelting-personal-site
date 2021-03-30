@@ -10,25 +10,29 @@ const portfolioArray = [
     website: 'https://whosaidit.co'
   },
   {
-    title: 'rowdtla.com',
+    title: 'Repo Destroyer',
     description:
-      'SPA for ROWDTLA, built w/ Gatsby.js and contentful',
+      'Repo Destroyer is a lightweight tool that allows you to quickly delete large numbers of GitHub repositories',
+    stack: 'Python',
+    repositories: ['https://github.com/joelhoelting/repo-destroyer']
+  },
+  {
+    title: 'rowdtla.com',
+    description: 'SPA for ROWDTLA, built w/ Gatsby.js and contentful',
     stack: 'Contentful, Gatsby.js, GraphQL',
     repositories: ['https://github.com/joelhoelting/row-dtla-full-site'],
     website: 'https://rowdtla.com'
   },
   {
     title: 'hudsonsquareproperties.com',
-    description:
-      'Server-side SPA built with Next.js for Hudson Square Properties, NYC real-estate',
+    description: 'Server-side SPA built with Next.js for Hudson Square Properties, NYC real-estate',
     stack: 'Wordpress (Headless CMS), Next.js',
     repositories: ['https://github.com/joelhoelting/hsp-full-site-next'],
     website: 'https://hudsonsquareproperties.com'
   },
   {
     title: '25parkrow.com',
-    description:
-      'SPA for 25 Park Row, interfaces w/ Express and Strapi API',
+    description: 'SPA for 25 Park Row, interfaces w/ Express and Strapi API',
     stack: 'Express.js, Strapi, React.js',
     repositories: ['https://github.com/joelhoelting/25-park-row-full-site'],
     website: 'https://25parkrow.com'

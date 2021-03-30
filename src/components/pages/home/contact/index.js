@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Divider from '~/components/shared/Divider';
+import Divider from '../_shared/Divider';
 import ContactForm from './ContactForm';
 import ContactFooter from './ContactFooter';
 

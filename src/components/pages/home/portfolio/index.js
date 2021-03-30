@@ -5,7 +5,7 @@ import { mediaMin } from '~/styles/mediaQueries';
 
 import { StyledCategoryTitle } from '../_shared/styles';
 
-import Divider from '~/components/shared/Divider';
+import Divider from '../_shared/Divider';
 
 import portfolioArray from '~/data/portfolio';
 import PortfolioCard from './PortfolioCard';

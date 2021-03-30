@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
+        path: `${__dirname}/src/assets/images`
       }
     },
     `gatsby-plugin-layout`,
@@ -26,7 +26,7 @@ module.exports = {
         background_color: `#2D3073`,
         theme_color: `#2D3073`,
         display: `minimal-ui`,
-        icon: `src/images/joel_hoelting_favicon.png` // This path is relative to the root of the site.
+        icon: `src/assets/images/joel_hoelting_favicon.png` // This path is relative to the root of the site.
       }
     },
     {
