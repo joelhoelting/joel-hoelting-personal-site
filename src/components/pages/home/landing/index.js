@@ -51,6 +51,8 @@ const LandingContainer = styled(Element)`
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 2em;
+    transition: opacity 300ms ease;
+    opacity: ${props => (props.continueButtonVisible ? 1 : 0)};
   }
 `;
 
@@ -95,7 +97,7 @@ const Landing = () => {
   }, [particlesRef, particlesActive]);
 
   return (
-    <LandingContainer name="landing">
+    <LandingContainer name="landing" continueButtonVisible={continueButtonVisible}>
       <Particles params={particleParams} particlesRef={particlesRef} />
       <div
         className="cta-container"
@@ -109,7 +111,7 @@ const Landing = () => {
         <ContinueButton visible={continueButtonVisible} />
         <ContinueButtonMobile visible={continueButtonVisible} />
       </div>
-      <SocialLinks styles={{ position: 'absolute', margin: 0 }} />
+      <SocialLinks />
     </LandingContainer>
   );
 };
