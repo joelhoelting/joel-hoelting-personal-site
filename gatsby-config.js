@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: `Joel Hölting`,
-    description: `Full stack software engineer and coding instructor with over two years of experience in Javascript, Ruby, Python and Node-based frameworks.`,
-    author: `@gatsbyjs`
+    title: `Joel Hoelting`,
+    siteUrl: `https://joelhoelting.com`,
+    description: `Full stack software engineer and coding instructor with over three years of experience in Javascript, Ruby, Python and Node-based frameworks.`,
+    author: `Joel Hoelting`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
