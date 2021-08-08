@@ -3,19 +3,19 @@ import React from 'react';
 import {
   ReactJs,
   Javascript,
-  NodeDotJs,
+  Nodedotjs,
   Graphql,
   Docker,
   Amazonaws,
   Git,
   Github,
   Ruby,
-  Rails,
+  Rubyonrails,
   Gulp,
   Gatsby,
   Linux,
   Gnubash,
-  NextDotJs,
+  Nextdotjs,
   Postgresql,
   Python,
   Figma,
@@ -23,7 +23,7 @@ import {
   Postman,
   Redux,
   Sketch,
-  VueDotJs
+  Vuedotjs
 } from '@icons-pack/react-simple-icons';
 
 const techItemsArray = [
@@ -31,12 +31,12 @@ const techItemsArray = [
     heading: 'CURRENT STACK',
     listItems: [
       { icon: <Javascript />, name: 'JavaScript' },
-      { icon: <NodeDotJs />, name: 'Node JS' },
+      { icon: <Nodedotjs />, name: 'Node JS' },
       { icon: <ReactJs />, name: 'React JS' },
       { icon: <Redux />, name: 'Redux' },
-      { icon: <VueDotJs />, name: 'Vue JS' },
+      { icon: <Vuedotjs />, name: 'Vue JS' },
       { icon: <Ruby />, name: 'Ruby' },
-      { icon: <Rails />, name: 'Rails' },
+      { icon: <Rubyonrails />, name: 'Rails' },
       { icon: <Python />, name: 'Python' },
       {
         icon: <Git />,
@@ -55,7 +55,7 @@ const techItemsArray = [
   {
     heading: 'OTHER SKILLS',
     listItems: [
-      { icon: <NextDotJs />, name: 'Next JS' },
+      { icon: <Nextdotjs />, name: 'Next JS' },
       { icon: <Gatsby />, name: 'Gatsby JS' },
       { icon: <Graphql />, name: 'GraphQL' },
       { icon: <Postgresql />, name: 'PostgresQL' },
