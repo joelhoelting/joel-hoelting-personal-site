@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import { mediaMin } from '~/styles/mediaQueries';
 
@@ -43,27 +42,10 @@ const BioWrapper = styled.div`
 `;
 
 const Bio = () => {
-  const portraitImgData = useStaticQuery(graphql`
-    query {
-      portraitImage: file(relativePath: { eq: "joel_hoelting_portrait.jpg" }) {
-        id
-        childImageSharp {
-          fluid {
-            base64
-            aspectRatio
-            sizes
-            src
-            srcSet
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <BioWrapper>
       <div className="photo">
-        <Img fluid={portraitImgData.portraitImage.childImageSharp.fluid} alt="Joel Hoelting" />
+        <StaticImage src="./joel_hoelting_portrait.jpg" alt="Joel Hoelting" />
       </div>
       <div className="summary">
         <p>
