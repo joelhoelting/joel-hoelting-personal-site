@@ -14,18 +14,18 @@ const BioWrapper = styled.div`
     padding: 5em 0;
     flex-direction: row;
   `}
-  .photo {
-    width: 100%;
-    max-width: 400px;
-    ${mediaMin.tabletLandscape`
-      max-width: none;
-      padding: 0 10%;
-      width: 50%;
-    `}
-    .gatsby-image-wrapper {
-      border: 1px solid white;
-    }
-  }
+  // .photo {
+  //   width: 100%;
+  //   max-width: 400px;
+  //   ${mediaMin.tabletLandscape`
+  //     max-width: none;
+  //     padding: 0 10%;
+  //     width: 50%;
+  //   `}
+  //   .gatsby-image-wrapper {
+  //     border: 1px solid white;
+  //   }
+  // }
   .summary {
     width: 100%;
     max-width: 400px;
@@ -33,20 +33,17 @@ const BioWrapper = styled.div`
     ${mediaMin.tabletLandscape`
       margin-top: none;
       max-width: none;
-      width: 50%;
+      width: 100%;
     `}
-    p {
-      max-width: 500px;
-    }
   }
 `;
 
 const Bio = () => {
   return (
     <BioWrapper>
-      <div className="photo">
+      {/* <div className="photo">
         <StaticImage src="./joel_hoelting_portrait.jpg" alt="Joel Hoelting" />
-      </div>
+      </div> */}
       <div className="summary">
         <p>
           I am a NYC-based full stack software engineer and AWS certified cloud practioner. I

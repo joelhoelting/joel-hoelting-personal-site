@@ -8,20 +8,20 @@ import YoutubeIcon from '~/components/images/icons/YoutubeIcon';
 const socialData = [
   {
     url: 'https://github.com/joelhoelting',
-    icon: <GithubIcon />
+    icon: <GithubIcon />,
   },
   {
-    url: 'mailto:joel@joelhoelting.com',
-    icon: <MailIcon />
+    url: 'mailto:6civ34031@mozmail.com',
+    icon: <MailIcon />,
   },
   {
     url: 'https://www.linkedin.com/in/joel-hoelting',
-    icon: <LinkedinIcon />
+    icon: <LinkedinIcon />,
   },
   {
     url: 'https://www.youtube.com/channel/UCwpMcEuy-PbV2fdv1-0WYfQ',
-    icon: <YoutubeIcon />
-  }
+    icon: <YoutubeIcon />,
+  },
 ];
 
 export default socialData;
