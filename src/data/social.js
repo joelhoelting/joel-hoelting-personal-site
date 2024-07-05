@@ -11,16 +11,12 @@ const socialData = [
     icon: <GithubIcon />,
   },
   {
-    url: 'mailto:6civ34031@mozmail.com',
+    url: 'mailto:1dkibychf@mozmail.com',
     icon: <MailIcon />,
   },
   {
     url: 'https://www.linkedin.com/in/joel-hoelting',
     icon: <LinkedinIcon />,
-  },
-  {
-    url: 'https://www.youtube.com/channel/UCwpMcEuy-PbV2fdv1-0WYfQ',
-    icon: <YoutubeIcon />,
   },
 ];
 
